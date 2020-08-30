@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Sport Club</title>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+        <h:outputScript library="js" name="jquery-3.3.1.min.js"/>
+        <h:outputScript library="js" name="bootstrap.js"/>
+    </h:head>
+    <h:body id="ana">
+
+        <div align="center" style="color: black;font-family: Amerika" ><h1 style="border: dashed">
+
+                <ui:insert name="ust">
+
+                </ui:insert>
+            </h1></div>
+
+        <div class="d-menu" id="menu">
+            <ul>
+                <li><a href="faces//faces/index.xhtml?faces-redirect=true">HOME PAGE</a></li>
+                <li><a href="faces/faces/personList.xhtml?faces-redirect=true" title="">PERSON </a>
+                    <ul>
+                        <li><a href="faces/faces/memberList.xhtml?faces-redirect=true">MEMBER</a></li>
+                        <li><a href="faces/faces/staffList.xhtml?faces-redirect=true">STAFF</a></li>
+                        <li><a href="faces/faces/athleteList.xhtml?faces-redirect=true">ATHLETE</a></li>
+                        <li><a href="faces/faces/supporterList.xhtml?faces-redirect=true">SUPPORTER</a></li>
+                    </ul>
+                </li>
+                <li><a href="faces/faces/authorityList.xhtml?faces-redirect=true">AUTHORITY</a></li>
+                <li><a href="faces/faces/taskList.xhtml?faces-redirect=true">TASK</a></li>
+                <li><a href="faces/faces/addressList.xhtml?faces-redirect=true">ADDRESS</a></li>
+                <li><a href="faces/faces/branchList.xhtml?faces-redirect=true">BRANCH</a></li>
+                <li><a href="faces/faces/ticketList.xhtml?faces-redirect=true">TICKET</a></li>
+            </ul>
+        </div>
+        <div id="center" style="border: none">
+
+            <ui:insert name="center">
+
+            </ui:insert>
+
+        </div>
+
+        <div id="saat">
+
+            <script>
+                function verSaat()
+                {
+                    var simdi = new Date();
+                    return simdi.toLocaleTimeString();
+                }
+
+                function saatGoster() {
+                    var saat = document.getElementById("saat");
+                    saat.innerHTML = verSaat();
+                }
+
+                saatGoster();
+
+                setInterval("saatGoster()", 1000);
+
+            </script>
+
+
+        </div>
+
+
+        
+    </h:body>
+</html>
+

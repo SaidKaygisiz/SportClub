@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="template.xhtml">
+    
+    
+    <ui:define name="ust">
+        <i style="color: black">T</i>
+        <i style="color: crimson">I</i>
+        <i style="color: purple">C</i>
+        <i style="color: orangered">K</i>
+        <i style="color: purple">E</i>
+        <i style="color: purple">T</i>&nbsp;&nbsp;&nbsp;
+        <i style="color: orangered">L</i>
+        <i style="color: green">I</i>
+        <i style="color: brown">S</i>
+        <i style="color: royalblue">T</i>
+    </ui:define>
+
+    <ui:define name="center">
+
+        <div class="container">
+            <div class="row">
+                <div style="margin-left: -100px;" class="col-md-11">
+                    <h:form id="tablo">
+                        <h4><b>Ticket Table</b></h4>
+                        <h:dataTable  class="table table-hover table-striped"  value="#{ticketController.ticketList}" var="ticket">
+                            <h:column>
+                                <f:facet name="header">Ticket ID</f:facet>
+                                    #{ticket.ticket_id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Supporter ID</f:facet>
+                                    #{ticket.sup_id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Ticket Number</f:facet>
+                                <h:commandLink  style="color: black;" value="#{ticket.ticket_number}" action="#{ticketController.updateForm(ticket)}">
+                                    <f:ajax execute="@this" render="form1"/>
+                                </h:commandLink>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Ticket Type</f:facet>
+                                    #{ticket.ticket_type}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Delete</f:facet>
+                                <h:commandButton action="#{ticketController.delete(ticket)}" value="Delete" styleClass="btn-sm btn-danger">
+                                    <f:ajax execute="@this" render="tablo"/>
+                                </h:commandButton>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>   
+                </div>
+
+                <div  class="col-md-1 form-row">
+                    <h:form  id="form1"><h4> <b>CRUD FORM</b></h4>
+                        <br></br>
+                        <b>
+                            <h:outputText value="Ticket Number:"></h:outputText>
+                            <h:inputText size="15" value="#{ticketController.ticket.ticket_number}" required="true" maxlength="6" p:placeholder="Six Values" ></h:inputText>
+                            <br></br><h:outputText value="Ticket Type:"></h:outputText>
+                            <h:inputText size="15" value="#{ticketController.ticket.ticket_type}" required="true" p:placeholder="ticket type" ></h:inputText>
+                            <br></br><h:outputText value="Supporter:"></h:outputText>
+                            <h:selectOneMenu value="#{ticketController.ticket.sup_id}" style="width: 200px;height:35px">
+                                <f:selectItem itemLabel="Select Supporter!" ></f:selectItem>
+                                <f:selectItems value="#{sup.supporterList}" var="s" itemLabel="#{s.first_name}&nbsp;#{s.last_name}" itemValue="#{s.supporter_id}"/>
+                            </h:selectOneMenu> 
+                        </b>
+                        <br></br><br></br>
+                        <h:form>
+                            <div class="btn-group">
+                                <h:commandButton action="#{ticketController.save()}" rendered="#{ticketController.ticket.ticket_id==0}" styleClass="btn-success" value="Insert">
+                                    <f:ajax execute="form1"  render="form1 tablo"/>
+                                </h:commandButton>
+                                <h:commandButton action="#{ticketController.update()}" rendered="#{ticketController.ticket.ticket_id!=0}" styleClass="btn-primary" value="Update">
+                                    <f:ajax execute="form1" render="form1 tablo"/>
+                                </h:commandButton>
+                                <h:commandButton value="Clear Form" action="#{ticketController.clearForm()}"  styleClass="btn-warning" rendered="#{ticketController.ticket.ticket_id!=0}">
+                                    <f:ajax execute="@this" render="form1"/>
+                                </h:commandButton>
+                            </div>
+                        </h:form>
+                    </h:form>
+
+                </div>
+
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>
+
+

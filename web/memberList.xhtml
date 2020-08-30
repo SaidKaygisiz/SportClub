@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      template="template.xhtml">
+    
+    
+    <ui:define name="ust">
+        <i style="color: black">M</i>
+        <i style="color: crimson">E</i>
+        <i style="color: purple">M</i>
+        <i style="color: black">B</i>
+        <i style="color: crimson">E</i>
+        <i style="color: crimson">R</i>
+        &nbsp;&nbsp;&nbsp;
+        <i style="color: orangered">L</i>
+        <i style="color: green">I</i>
+        <i style="color: brown">S</i>
+        <i style="color: royalblue">T</i>
+    </ui:define>
+    
+    
+    <ui:define name="center">
+        <div class="container">
+            <div class="row">
+                <div style="margin-left: -100px;" class="col-md-11">
+                    <h:form id="tablo">
+                        <h2><b>Member Table</b></h2>
+                        <h:dataTable class="table table-hover table-striped"  value="#{mem.memberList}" var="ml">
+                            <h:column>
+                                <f:facet name="header">Member ID</f:facet>
+                                    #{ml.member_id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">First_Name</f:facet>
+                                <h:commandLink action="#{mem.updateForm(ml)}" value="#{ml.first_name}" style="color: black;">
+                                    <f:ajax execute="@this" render="form1"/>
+                                </h:commandLink>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Last_Name</f:facet>
+                                    #{ml.last_name}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Donation_Amount</f:facet>
+                                #{ml.donation_amount}&nbsp;tL
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Gender</f:facet>
+                                    #{ml.gender}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Birth_Date</f:facet>
+                                    #{ml.birth_date}
+                            </h:column> 
+                            <h:column>
+                                <f:facet name="header">Delete</f:facet>
+                                <h:commandButton action="#{mem.delete(ml)}" value="Delete" styleClass="btn-sm btn-danger">
+                                    <f:ajax execute="@this" render="tablo"/>   
+                                </h:commandButton>
+
+                            </h:column> 
+                        </h:dataTable>
+                    </h:form>   
+                </div>
+
+                <div class="col-md-1 form-row">
+                    <h:form  id="form1"><h4> <b>CRUD FORM</b></h4>
+                        <br></br>
+                        <b>
+                            <h:outputText value="First Name:"></h:outputText>
+                            <h:inputText value="#{mem.member.first_name}" size="15" required="true" p:placeholder="First_Name" ></h:inputText>
+                            <h:outputText value="Last Name:"></h:outputText>
+                            <h:inputText value="#{mem.member.last_name}" size="15" required="true" p:placeholder="Last_Name" ></h:inputText>
+                            <h:outputText value="E-Mail:"></h:outputText>
+                            <h:inputText value="#{mem.member.e_mail}" size="15" required="true" p:placeholder="E_Mail" ></h:inputText>
+                            <h:outputText value="Birth Date:"></h:outputText>
+                            <h:inputText value="#{mem.member.birth_date}" size="15" required="true" p:placeholder="dd/mm/yyyy" >
+                                <f:converter converterId="convertDate"/>
+                            </h:inputText>
+
+                            <h:outputText  value="Donate Amount:"></h:outputText>
+                            <h:inputText value="#{mem.member.donation_amount}" size="15" required="true" p:placeholder="TL"></h:inputText>
+
+                            <h:outputText value="Gender:"></h:outputText>
+                            <h:selectOneMenu value="#{mem.member.gender}" style="width: 150px;height:35px">
+                                <f:selectItem itemLabel="Select Gender!" ></f:selectItem>
+                                <f:selectItem itemLabel="Male" itemValue="M" ></f:selectItem>
+                                <f:selectItem itemLabel="Female" itemValue="F" ></f:selectItem>
+                            </h:selectOneMenu>
+                        </b>
+                        <br></br><br></br>
+                        <h:form>
+                            <div class="btn-group">
+                                <h:commandButton action="#{mem.save()}" rendered="#{mem.member.member_id==0}" styleClass="btn-success" value="Insert">
+                                    <f:ajax execute="form1" render="form1 tablo"/>
+                                </h:commandButton>
+                                <h:commandButton action="#{mem.update()}" rendered="#{mem.member.member_id!=0}" styleClass="btn-primary" value="Update">
+                                    <f:ajax execute="form1" render="form1 tablo"/>
+                                </h:commandButton>
+                                <h:commandButton action="#{mem.clearForm()}" rendered="#{mem.member.member_id!=0}"  styleClass="btn-warning" value="Clear Form">
+                                    <f:ajax execute="form1" render="form1"/>
+                                </h:commandButton>
+                            </div>
+                        </h:form>
+
+                    </h:form>
+
+                </div>
+
+            </div>
+        </div>
+        </ui:define>
+    </ui:composition>
+

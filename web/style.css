@@ -1,0 +1,92 @@
+#center{
+    position: absolute;
+    height: 470px;
+    width: 1000px;
+    left: 290px;
+    top: 100px;
+    color: black;    
+    font-size: 9pt;
+    font-weight: bold;
+    
+}
+.d-menu ul li{
+    list-style: none;
+}
+
+.d-menu ul{
+    margin: 0;
+    padding: 0;
+}
+
+.d-menu ul li a{
+    text-decoration: none;
+    padding: 7px;
+    display: block;
+    color: black;
+    font-weight:bold;
+    
+}
+
+.d-menu ul li ul {
+    display:none;
+}
+
+.d-menu ul li:hover ul {
+    display:block;
+    position:absolute;
+    margin:-45px 0 0 148px;
+}
+
+.d-menu ul li ul li a {
+    padding:10px;
+    font-size:14px;
+    background-color: transparent;
+    transition:all .3s ease-in-out;
+    width:125px;
+    border-style: dotted;
+    border-width: thin;
+    
+    
+    
+}
+.d-menu ul li a:hover {
+    background-color: whitesmoke;
+    transition:all .3s ease-in-out;
+}
+
+
+
+#tablo{
+    color: black;
+    border-style: groove;
+    font-size: 11pt;
+    font-weight: bold;
+   
+}
+
+#form1{
+    color: black;
+    border-style: groove;
+    font-size: 12pt;
+}
+
+#menu{
+    position: absolute;
+    height: 270px;
+    width: 150px;
+    left: 15px;
+    top: 100px;
+    background-color:transparent;
+    border-style: dotted;
+    border-width: thin;
+    
+}
+
+#saat{
+    position: absolute;
+    top: 370px;
+    left:17px;
+    font-weight: bold;
+    
+}
+

@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      template="template.xhtml">
+
+    
+    <ui:define name="ust">
+        <i style="color: black">S</i>
+        <i style="color: crimson">U</i>
+        <i style="color: purple">P</i>
+        <i style="color: black">P</i>
+        <i style="color: crimson">O</i>
+        <i style="color: purple">R</i>
+        <i style="color: black">T</i>
+        <i style="color: crimson">E</i>
+        <i style="color: purple">R</i>
+        &nbsp;&nbsp;&nbsp;
+        <i style="color: orangered">L</i>
+        <i style="color: green">I</i>
+        <i style="color: brown">S</i>
+        <i style="color: royalblue">T</i>
+    </ui:define>
+    
+    <ui:define name="center">
+        <div class="container">
+            <div class="row">
+                <div style="margin-left: -100px;" class="col-md-11">
+                    <h:form id="tablo">
+                        <h2><b>Supporter Table</b></h2>
+                        <h:dataTable class="table table-hover table-striped" value="#{sup.supporterList}" var="supporter">
+                            <h:column>
+                                <f:facet name="header">Supporter ID</f:facet>
+                                    #{supporter.supporter_id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">First_Name</f:facet>
+                                <h:commandLink value="#{supporter.first_name}" action="#{sup.updateForm(supporter)}" style="color: black;" >
+                                    <f:ajax execute="@this" render="form1"/>
+                                </h:commandLink>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Last_Name</f:facet>
+                                    #{supporter.last_name}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">E-Mail</f:facet>
+                                    #{supporter.e_mail}
+                            </h:column>
+
+
+                            <h:column>
+                                <f:facet name="header">Gender</f:facet>
+                                    #{supporter.gender}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Birth_Date</f:facet>
+                                    #{supporter.birth_date}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Delete</f:facet>
+                                <h:commandButton action="#{sup.delete(supporter)}" value="Delete" styleClass="btn-sm btn-danger">
+                                    <f:ajax execute="@this" render="tablo"/>
+                                </h:commandButton>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>   
+                </div>
+
+                <div  class="col-md-1 form-row">
+                    <h:form  id="form1"><h4> <b>CRUD FORM</b></h4>
+                        <br></br>
+                        <b>
+                            <h:outputText value="First Name:"></h:outputText>
+                            <h:inputText size="15" value="#{sup.supporter.first_name}"  required="true" p:placeholder="First_Name" ></h:inputText>
+                            <h:outputText value="Last Name:"></h:outputText>
+                            <h:inputText size="15" value="#{sup.supporter.last_name}" required="true" p:placeholder="Last_Name" ></h:inputText>
+                            <h:outputText value="Mail:"></h:outputText>
+                            <h:inputText size="15" value="#{sup.supporter.e_mail}" required="true" p:placeholder="E_Mail" ></h:inputText>
+                            <h:outputText value="Birth Date:"></h:outputText>
+                            <h:inputText size="15" value="#{sup.supporter.birth_date}" required="true"  p:placeholder="dd/mm/yyyy">
+                                <f:converter converterId="convertDate"/>
+                            </h:inputText>
+                            <h:outputText  value="Gender:"></h:outputText>
+                            <h:selectOneMenu value="#{sup.supporter.gender}" style="width: 150px;height:35px">
+                                <f:selectItem itemLabel="Select Gender!" ></f:selectItem>
+                                <f:selectItem itemLabel="Male" itemValue="M" ></f:selectItem>
+                                <f:selectItem itemLabel="Female" itemValue="F" ></f:selectItem>
+                            </h:selectOneMenu>
+
+                        </b>
+                        <br></br><br></br>
+                        <h:form>
+                            <div class="btn-group">
+                                <h:commandButton action="#{sup.save()}" rendered="#{sup.supporter.supporter_id==0}" styleClass="btn-success" value="Insert">
+                                    <f:ajax execute="form1" render="form1 tablo"/>
+                                </h:commandButton>
+                                <h:commandButton action="#{sup.update()}" rendered="#{sup.supporter.supporter_id!=0}" styleClass="btn-primary" value="Update">
+                                    <f:ajax execute="form1" render="form1 tablo"/>
+                                </h:commandButton>
+                                <h:commandButton action="#{sup.clearForm()}" rendered="#{sup.supporter.supporter_id!=0}"  styleClass="btn-warning" value="Clear Form">
+                                    <f:ajax execute="form1" render="form1"/>
+                                </h:commandButton>
+                            </div>
+                        </h:form>
+
+
+
+
+                    </h:form>
+
+                </div>
+
+            </div>
+        </div>
+        </ui:define>
+   </ui:composition>
+

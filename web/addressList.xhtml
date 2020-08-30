@@ -1,0 +1,1511 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Address List</title>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+        <h:outputScript library="js" name="jquery-3.3.1.min.js"/>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+        <h:outputScript library="js" name="bootstrap.js"/>
+    </h:head>
+    <h:body id="ana" >
+        <div class="container">
+            <div class="row">
+                <div style="margin-left: -100px;" class="col-md-11">
+                    <h:form id="tablo">
+                        <h2><b>Address Table</b></h2>
+                        <h:dataTable class="table table-hover table-striped" value="#{add.addressList}" var="address">
+
+                            <h:column>
+                                <f:facet name="header">ADDRESS ID</f:facet>
+                                    #{address.address_id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">NEIGHBORHOOD</f:facet>
+                                    <h:commandLink style="color: black;" value="#{address.neighborhood}" action="#{add.updateForm(address)}">
+                                        <f:ajax execute="@this" render="form1"/>
+                                    </h:commandLink>
+                                
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">STREET</f:facet>
+                                    #{address.street}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">NUMBER</f:facet>
+                                    #{address.number}
+                            </h:column>
+
+
+                            <h:column>
+                                <f:facet name="header">POSTAL CODE</f:facet>
+                                    #{address.postal_code}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">DISTRICT</f:facet>
+                                    #{address.district}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">COUNTRY</f:facet>
+                                    #{address.country}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">DELETE</f:facet>
+                                <h:commandButton value="Delete" class="btn-danger" action="#{add.delete(address)}" >
+                                    <f:ajax execute="@this" render="tablo"></f:ajax>
+                                </h:commandButton>
+                            </h:column>
+                        </h:dataTable>              
+                    </h:form>   
+                </div>
+
+                <div  class="col-md-1 form-row">
+                    <h:form id="form1"><h4> <b>CRUD FORM</b></h4>
+                        <br></br>
+                        <b>
+
+                                    
+                            
+                            <h:outputText value="Country:"></h:outputText><br></br>
+                            <h:selectOneMenu value="#{add.address.country}"   style="width:179px">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Country!"></f:selectItem>
+                                <f:selectItem itemValue="Adana" itemLabel="Adana">  </f:selectItem>
+                                <f:selectItem itemValue="Adıyaman" itemLabel="Adıyaman"></f:selectItem>
+                                <f:selectItem itemValue="Afyonkarahisar" itemLabel="Afyonkarahisar"></f:selectItem>
+                                <f:selectItem itemValue="Ağrı" itemLabel="Ağrı"></f:selectItem>
+                                <f:selectItem itemValue="Amasya" itemLabel="Amasya"></f:selectItem>
+                                <f:selectItem itemValue="Ankara" itemLabel="Ankara"></f:selectItem>
+                                <f:selectItem itemValue="Antalya" itemLabel="Antalya"></f:selectItem>
+                                <f:selectItem itemValue="Artvin" itemLabel="Artvin"></f:selectItem>
+                                <f:selectItem itemValue="Aydın" itemLabel="Aydın"></f:selectItem>
+                                <f:selectItem itemValue="Balıkesir" itemLabel="Balıkesir"></f:selectItem>
+                                <f:selectItem itemValue="Bilecik" itemLabel="Bilecik"></f:selectItem>
+                                <f:selectItem itemValue="Bingöl" itemLabel="Bingöl"></f:selectItem>
+                                <f:selectItem itemValue="Bitlis" itemLabel="Bitlis"></f:selectItem>
+                                <f:selectItem itemValue="Bolu" itemLabel="Bolu"></f:selectItem>
+                                <f:selectItem itemValue="Burdur" itemLabel="Burdur"></f:selectItem>
+                                <f:selectItem itemValue="Bursa" itemLabel="Bursa"></f:selectItem>
+                                <f:selectItem itemValue="Çanakkale" itemLabel="Çanakkale"></f:selectItem>
+                                <f:selectItem itemValue="Çankırı" itemLabel="Çankırı"></f:selectItem>
+                                <f:selectItem itemValue="Çorum" itemLabel="Çorum"></f:selectItem>
+                                <f:selectItem itemValue="Denizli" itemLabel="Denizli"></f:selectItem>
+                                <f:selectItem itemValue="Diyarbakır" itemLabel="Diyarbakır"></f:selectItem>
+                                <f:selectItem itemValue="Edirne" itemLabel="Edirne"></f:selectItem>
+                                <f:selectItem itemValue="Elazığ" itemLabel="Elazığ"></f:selectItem>
+                                <f:selectItem itemValue="Erzincan" itemLabel="Erzincan"></f:selectItem>
+                                <f:selectItem itemValue="Erzurum" itemLabel="Erzurum"></f:selectItem>
+                                <f:selectItem itemValue="Eskişehir" itemLabel="Eskişehir"></f:selectItem>
+                                <f:selectItem itemValue="Gaziantep" itemLabel="Gaziantep"></f:selectItem>
+                                <f:selectItem itemValue="Giresun" itemLabel="Giresun"></f:selectItem>
+                                <f:selectItem itemValue="Gümüşhane" itemLabel="Gümüşhane"></f:selectItem>
+                                <f:selectItem itemValue="Hakkari" itemLabel="Hakkari"></f:selectItem>
+                                <f:selectItem itemValue="Hatay" itemLabel="Hatay"></f:selectItem>
+                                <f:selectItem itemValue="Isparta" itemLabel="Isparta"></f:selectItem>
+                                <f:selectItem itemValue="Mersin" itemLabel="Mersin"></f:selectItem>
+                                <f:selectItem itemValue="İstanbul" itemLabel="İstanbul"></f:selectItem>
+                                <f:selectItem itemValue="İzmir" itemLabel="İzmir"></f:selectItem>
+                                <f:selectItem itemValue="Kars" itemLabel="Kars"></f:selectItem>
+                                <f:selectItem itemValue="Kastamonu" itemLabel="Kastamonu"></f:selectItem>
+                                <f:selectItem itemValue="Kayseri" itemLabel="Kayseri"></f:selectItem>
+                                <f:selectItem itemValue="Kırklareli" itemLabel="Kırklareli"></f:selectItem>
+                                <f:selectItem itemValue="Kırşehir" itemLabel="Kırşehir"></f:selectItem>
+                                <f:selectItem itemValue="Kocaeli" itemLabel="Kocaeli"></f:selectItem>
+                                <f:selectItem itemValue="Konya" itemLabel="Konya"></f:selectItem>
+                                <f:selectItem itemValue="Kütahya" itemLabel="Kütahya"></f:selectItem>
+                                <f:selectItem itemValue="Malatya" itemLabel="Malatya"></f:selectItem>
+                                <f:selectItem itemValue="Manisa" itemLabel="Manisa"></f:selectItem>
+                                <f:selectItem itemValue="Kahramanmaraş" itemLabel="Kahramanmaraş"></f:selectItem>
+                                <f:selectItem itemValue="Mardin" itemLabel="Mardin"></f:selectItem>
+                                <f:selectItem itemValue="Muğla" itemLabel="Muğla"></f:selectItem>
+                                <f:selectItem itemValue="Muş" itemLabel="Muş"></f:selectItem>
+                                <f:selectItem itemValue="Nevşehir" itemLabel="Nevşehir"></f:selectItem>
+                                <f:selectItem itemValue="Niğde" itemLabel="Niğde"></f:selectItem>
+                                <f:selectItem itemValue="Ordu" itemLabel="Ordu"></f:selectItem>
+                                <f:selectItem itemValue="Rize" itemLabel="Rize"></f:selectItem>
+                                <f:selectItem itemValue="Sakarya" itemLabel="Sakarya"></f:selectItem>
+                                <f:selectItem itemValue="Samsun" itemLabel="Samsun"></f:selectItem>
+                                <f:selectItem itemValue="Siirt" itemLabel="Siirt"></f:selectItem>
+                                <f:selectItem itemValue="Sinop" itemLabel="Sinop"></f:selectItem>
+                                <f:selectItem itemValue="Sivas" itemLabel="Sivas"></f:selectItem>
+                                <f:selectItem itemValue="Tekirdağ" itemLabel="Tekirdağ"></f:selectItem>
+                                <f:selectItem itemValue="Tokat" itemLabel="Tokat"></f:selectItem>
+                                <f:selectItem itemValue="Trabzon" itemLabel="Trabzon"></f:selectItem>
+                                <f:selectItem itemValue="Tunceli" itemLabel="Tunceli"></f:selectItem>
+                                <f:selectItem itemValue="Şanlıurfa" itemLabel="Şanlıurfa"></f:selectItem>
+                                <f:selectItem itemValue="Uşak" itemLabel="Uşak"></f:selectItem>
+                                <f:selectItem itemValue="Van" itemLabel="Van"></f:selectItem>
+                                <f:selectItem itemValue="Yozgat" itemLabel="Yozgat"></f:selectItem>
+                                <f:selectItem itemValue="Zonguldak" itemLabel="Zonguldak"></f:selectItem>
+                                <f:selectItem itemValue="Aksaray" itemLabel="Aksaray"></f:selectItem>
+                                <f:selectItem itemValue="Bayburt" itemLabel="Bayburt"></f:selectItem>
+                                <f:selectItem itemValue="Karaman" itemLabel="Karaman"></f:selectItem>
+                                <f:selectItem itemValue="Kırıkkale" itemLabel="Kırıkkale"></f:selectItem>
+                                <f:selectItem itemValue="Batman" itemLabel="Batman"></f:selectItem>
+                                <f:selectItem itemValue="Şırnak" itemLabel="Şırnak"></f:selectItem>
+                                <f:selectItem itemValue="Bartın" itemLabel="Bartın"></f:selectItem>
+                                <f:selectItem itemValue="Ardahan" itemLabel="Ardahan"></f:selectItem>
+                                <f:selectItem itemValue="Iğdır" itemLabel="Iğdır"></f:selectItem>
+                                <f:selectItem itemValue="Yalova" itemLabel="Yalova"></f:selectItem>
+                                <f:selectItem itemValue="Karabük" itemLabel="Karabük"></f:selectItem>
+                                <f:selectItem itemValue="Kilis" itemLabel="Kilis"></f:selectItem>
+                                <f:selectItem itemValue="Osmaniye" itemLabel="Osmaniye"></f:selectItem>
+                                <f:selectItem itemValue="Düzce" itemLabel="Düzce"></f:selectItem>
+                                <f:ajax execute="@this" render="form1"/>
+                            </h:selectOneMenu>
+
+                            <h:outputText rendered="#{add.address.country==add.s1}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s1}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Aladağ" itemLabel="Aladağ"></f:selectItem>
+                                <f:selectItem itemValue="Ceyhan" itemLabel="Ceyhan"></f:selectItem>
+                                <f:selectItem itemValue="Çukurova" itemLabel="Çukurova"></f:selectItem>
+                                <f:selectItem itemValue="Feke" itemLabel="Feke"></f:selectItem>
+                                <f:selectItem itemValue="İmamoğlu" itemLabel="İmamoğlu"></f:selectItem>
+                                <f:selectItem itemValue="Karaisalı" itemLabel="Karaisalı"></f:selectItem>
+                                <f:selectItem itemValue="Karataş" itemLabel="Karataş"></f:selectItem>
+                                <f:selectItem itemValue="Kozan" itemLabel="Kozan"></f:selectItem>
+                                <f:selectItem itemValue="Pozantı" itemLabel="Pozantı"></f:selectItem>
+                                <f:selectItem itemValue="Saimbeyli" itemLabel="Saimbeyli"></f:selectItem>
+                                <f:selectItem itemValue="Sarıçam" itemLabel="Sarıçam"></f:selectItem>
+                                <f:selectItem itemValue="Seyhan" itemLabel="Seyhan"></f:selectItem>
+                                <f:selectItem itemValue="Tufanbeyli" itemLabel="Tufanbeyli"></f:selectItem>
+                                <f:selectItem itemValue="Yumurtalık" itemLabel="Yumurtalık"></f:selectItem>
+                                <f:selectItem itemValue="Yüreğir" itemLabel="Yüreğir"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s2}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s2}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Besni" itemLabel="Besni"></f:selectItem>
+                                <f:selectItem itemValue="Çelikhan" itemLabel="Çelikhan"></f:selectItem>
+                                <f:selectItem itemValue="Gerger" itemLabel="Gerger"></f:selectItem>
+                                <f:selectItem itemValue="Gölbaşı" itemLabel="Gölbaşı"></f:selectItem>
+                                <f:selectItem itemValue="Kahta" itemLabel="Kahta"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Samsat" itemLabel="Samsat"></f:selectItem>
+                                <f:selectItem itemValue="Sincik" itemLabel="Sincik"></f:selectItem>
+                                <f:selectItem itemValue="Tut" itemLabel="Tut"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s3}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s3}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Başmakçı" itemLabel="Başmakçı"></f:selectItem>
+                                <f:selectItem itemValue="Bayat" itemLabel="Bayat"></f:selectItem>
+                                <f:selectItem itemValue="Bolvadin" itemLabel="Bolvadin"></f:selectItem>
+                                <f:selectItem itemValue="Çay" itemLabel="Çay"></f:selectItem>
+                                <f:selectItem itemValue="Çobanlar" itemLabel="Çobanlar"></f:selectItem>
+                                <f:selectItem itemValue="Dazkırı" itemLabel="Dazkırı"></f:selectItem>
+                                <f:selectItem itemValue="Dinar" itemLabel="Dinar"></f:selectItem>
+                                <f:selectItem itemValue="Emirdağ" itemLabel="Emirdağ"></f:selectItem>
+                                <f:selectItem itemValue="Evciler" itemLabel="Evciler"></f:selectItem>
+                                <f:selectItem itemValue="Hocalar" itemLabel="Hocalar"></f:selectItem>
+                                <f:selectItem itemValue="İhsaniye" itemLabel="İhsaniye"></f:selectItem>
+                                <f:selectItem itemValue="İscehisar" itemLabel="İscehisar"></f:selectItem>
+                                <f:selectItem itemValue="Kızılören" itemLabel="Kızılören"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Sandıklı" itemLabel="Sandıklı"></f:selectItem>
+                                <f:selectItem itemValue="Sinanpaşa" itemLabel="Sinanpaşa"></f:selectItem>
+                                <f:selectItem itemValue="Şuhut" itemLabel="Şuhut"></f:selectItem>
+                                <f:selectItem itemValue="Sultandağı" itemLabel="Sultandağı"></f:selectItem>
+                            </h:selectOneMenu> 
+                            <h:outputText rendered="#{add.address.country==add.s4}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s4}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Diyadin" itemLabel="Diyadin"></f:selectItem>
+                                <f:selectItem itemValue="Doğubayazıt" itemLabel="Doğubayazıt"></f:selectItem>
+                                <f:selectItem itemValue="Eleşkirt" itemLabel="Eleşkirt"></f:selectItem>
+                                <f:selectItem itemValue="Hamur" itemLabel="Hamur"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Patnos" itemLabel="Patnos"></f:selectItem>
+                                <f:selectItem itemValue="Taşlıçay" itemLabel="Taşlıçay"></f:selectItem>
+                                <f:selectItem itemValue="Tutak" itemLabel="Tutak"></f:selectItem>
+
+                            </h:selectOneMenu>
+
+                            <h:outputText rendered="#{add.address.country==add.s5}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s5}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Göynücek" itemLabel="Göynücek"></f:selectItem>
+                                <f:selectItem itemValue="Gümüşhacıköy" itemLabel="Gümüşhacıköy"></f:selectItem>
+                                <f:selectItem itemValue="Hamamözü" itemLabel="Hamamözü"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Merzifon" itemLabel="Merzifon"></f:selectItem>
+                                <f:selectItem itemValue="Suluova" itemLabel="Suluova"></f:selectItem>
+                                <f:selectItem itemValue="Taşova" itemLabel="Taşova"></f:selectItem>
+
+                            </h:selectOneMenu> 
+
+                            <h:outputText rendered="#{add.address.country==add.s6}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s6}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Akyurt" itemLabel="Akyurt"></f:selectItem>
+                                <f:selectItem itemValue="Altındağ" itemLabel="Altındağ"></f:selectItem>
+                                <f:selectItem itemValue="Ayaş" itemLabel="Ayaş"></f:selectItem>
+                                <f:selectItem itemValue="Bala" itemLabel="Bala"></f:selectItem>
+                                <f:selectItem itemValue="Beypazarı" itemLabel="Beypazarı"></f:selectItem>
+                                <f:selectItem itemValue="Çamlıdere" itemLabel="Çamlıdere"></f:selectItem>
+                                <f:selectItem itemValue="Çankaya" itemLabel="Çankaya"></f:selectItem>
+                                <f:selectItem itemValue="Çubuk" itemLabel="Çubuk"></f:selectItem>
+                                <f:selectItem itemValue="Elmadağ" itemLabel="Elmadağ"></f:selectItem>
+                                <f:selectItem itemValue="Etimesgut" itemLabel="Etimesgut"></f:selectItem>
+                                <f:selectItem itemValue="Evren" itemLabel="Evren"></f:selectItem>
+                                <f:selectItem itemValue="Gölbaşı" itemLabel="Gölbaşı"></f:selectItem>
+                                <f:selectItem itemValue="Güdül" itemLabel="Güdül"></f:selectItem>
+                                <f:selectItem itemValue="Haymana" itemLabel="Haymana"></f:selectItem>
+                                <f:selectItem itemValue="Kahramankazan" itemLabel="Kahramankazan"></f:selectItem>
+                                <f:selectItem itemValue="Kalecik" itemLabel="Kalecik"></f:selectItem>
+                                <f:selectItem itemValue="Keçiören" itemLabel="Keçiören"></f:selectItem>
+                                <f:selectItem itemValue="Kızılcahamam" itemLabel="Kızılcahamam"></f:selectItem>
+                                <f:selectItem itemValue="Mamak" itemLabel="Mamak"></f:selectItem>
+                                <f:selectItem itemValue="Nallıhan" itemLabel="Nallıhan"></f:selectItem>
+                                <f:selectItem itemValue="Polatlı" itemLabel="Polatlı"></f:selectItem>
+                                <f:selectItem itemValue="Pursaklar" itemLabel="Pursaklar"></f:selectItem>
+                                <f:selectItem itemValue="Şereflikoçhisar" itemLabel="Şereflikoçhisar"></f:selectItem>
+                                <f:selectItem itemValue="Sincan" itemLabel="Sincan"></f:selectItem>
+                                <f:selectItem itemValue="Yenimahalle" itemLabel="Yenimahalle"></f:selectItem>
+
+                            </h:selectOneMenu> 
+
+                            <h:outputText rendered="#{add.address.country==add.s7}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s7}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Akseki" itemLabel="Akseki"></f:selectItem>
+                                <f:selectItem itemValue="Aksu" itemLabel="Aksu"></f:selectItem>
+                                <f:selectItem itemValue="Alanya" itemLabel="Alanya"></f:selectItem>
+                                <f:selectItem itemValue="Demre" itemLabel="Demre"></f:selectItem>
+                                <f:selectItem itemValue="Döşemealtı" itemLabel="Döşemealtı"></f:selectItem>
+                                <f:selectItem itemValue="Elmalı" itemLabel="Elmalı"></f:selectItem>
+                                <f:selectItem itemValue="Finike" itemLabel="Finike"></f:selectItem>
+                                <f:selectItem itemValue="Gazipaşa" itemLabel="Gazipaşa"></f:selectItem>
+                                <f:selectItem itemValue="Gündoğmuş" itemLabel="Gündoğmuş"></f:selectItem>
+                                <f:selectItem itemValue="İbradı" itemLabel="İbradı"></f:selectItem>
+                                <f:selectItem itemValue="Kaş" itemLabel="Kaş"></f:selectItem>
+                                <f:selectItem itemValue="Kemer" itemLabel="Kemer"></f:selectItem>
+                                <f:selectItem itemValue="Kepez" itemLabel="Kepez"></f:selectItem>
+                                <f:selectItem itemValue="Konyaaltı" itemLabel="Konyaaltı"></f:selectItem>
+                                <f:selectItem itemValue="Korkuteli" itemLabel="Korkuteli"></f:selectItem>
+                                <f:selectItem itemValue="Kumluca" itemLabel="Kumluca"></f:selectItem>
+                                <f:selectItem itemValue="Manavgat" itemLabel="Manavgat"></f:selectItem>
+                                <f:selectItem itemValue="Muratpaşa" itemLabel="Muratpaşa"></f:selectItem>
+                                <f:selectItem itemValue="Serik" itemLabel="Serik"></f:selectItem>
+
+                            </h:selectOneMenu>
+
+                            <h:outputText rendered="#{add.address.country==add.s8}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s8}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Ardanuç" itemLabel="Ardanuç"></f:selectItem>
+                                <f:selectItem itemValue="Arhavi" itemLabel="Arhavi"></f:selectItem>
+                                <f:selectItem itemValue="Borçka" itemLabel="Borçka"></f:selectItem>
+                                <f:selectItem itemValue="Hopa" itemLabel="Hopa"></f:selectItem>
+                                <f:selectItem itemValue="Kemalpaşa" itemLabel="Kemalpaşa"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Murgul" itemLabel="Murgul"></f:selectItem>
+                                <f:selectItem itemValue="Şavşat" itemLabel="Şavşat"></f:selectItem>
+                                <f:selectItem itemValue="Yusufeli" itemLabel="Yusufeli"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s9}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s9}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Bozdoğan" itemLabel="Bozdoğan"></f:selectItem>
+                                <f:selectItem itemValue="Buharkent" itemLabel="Buharkent"></f:selectItem>
+                                <f:selectItem itemValue="Çine" itemLabel="Çine"></f:selectItem>
+                                <f:selectItem itemValue="Didim" itemLabel="Didim"></f:selectItem>
+                                <f:selectItem itemValue="Efeler" itemLabel="Efeler"></f:selectItem>
+                                <f:selectItem itemValue="Germencik" itemLabel="Germencik"></f:selectItem>
+                                <f:selectItem itemValue="İncirliova" itemLabel="İncirliova"></f:selectItem>
+                                <f:selectItem itemValue="Karacasu" itemLabel="Karacasu"></f:selectItem>
+                                <f:selectItem itemValue="Karpuzlu" itemLabel="Karpuzlu"></f:selectItem>
+                                <f:selectItem itemValue="Koçarlı" itemLabel="Koçarlı"></f:selectItem>
+                                <f:selectItem itemValue="Köşk" itemLabel="Köşk"></f:selectItem>
+                                <f:selectItem itemValue="Kuşadası" itemLabel="Kuşadası"></f:selectItem>
+                                <f:selectItem itemValue="Kuyucak" itemLabel="Kuyucak"></f:selectItem>
+                                <f:selectItem itemValue="Nazilli" itemLabel="Nazilli"></f:selectItem>
+                                <f:selectItem itemValue="Söke" itemLabel="Söke"></f:selectItem>
+                                <f:selectItem itemValue="Sultanhisar" itemLabel="Sultanhisar"></f:selectItem>
+                                <f:selectItem itemValue="Yenipazar" itemLabel="Yenipazar"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s10}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s10}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Altıeylül" itemLabel="Altıeylül"></f:selectItem>
+                                <f:selectItem itemValue="Ayvalık" itemLabel="Ayvalık"></f:selectItem>
+                                <f:selectItem itemValue="Balya" itemLabel="Balya"></f:selectItem>
+                                <f:selectItem itemValue="Bandırma" itemLabel="Bandırma"></f:selectItem>
+                                <f:selectItem itemValue="Bigadiç" itemLabel="Bigadiç"></f:selectItem>
+                                <f:selectItem itemValue="Burhaniye" itemLabel="Burhaniye"></f:selectItem>
+                                <f:selectItem itemValue="Dursunbey" itemLabel="Dursunbey"></f:selectItem>
+                                <f:selectItem itemValue="Edremit" itemLabel="Edremit"></f:selectItem>
+                                <f:selectItem itemValue="Erdek" itemLabel="Erdek"></f:selectItem>
+                                <f:selectItem itemValue="Gömeç" itemLabel="Gömeç"></f:selectItem>
+                                <f:selectItem itemValue="Gönen" itemLabel="Gönen"></f:selectItem>
+                                <f:selectItem itemValue="Havran" itemLabel="Havran"></f:selectItem>
+                                <f:selectItem itemValue="İvrindi" itemLabel="İvrindi"></f:selectItem>
+                                <f:selectItem itemValue="Karesi" itemLabel="Karesi"></f:selectItem>
+                                <f:selectItem itemValue="Kepsut" itemLabel="Kepsut"></f:selectItem>
+                                <f:selectItem itemValue="Manyas" itemLabel="Manyas"></f:selectItem>
+                                <f:selectItem itemValue="Marmara" itemLabel="Marmara"></f:selectItem>
+                                <f:selectItem itemValue="Savaştepe" itemLabel="Savaştepe"></f:selectItem>
+                                <f:selectItem itemValue="Sındırgı" itemLabel="Sındırgı"></f:selectItem>
+                                <f:selectItem itemValue="Susurluk" itemLabel="Susurluk"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s11}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s11}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Bozüyük" itemLabel="Bozüyük"></f:selectItem>
+                                <f:selectItem itemValue="Gölpazarı" itemLabel="Gölpazarı"></f:selectItem>
+                                <f:selectItem itemValue="İnhisar" itemLabel="İnhisar"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Osmaneli" itemLabel="Osmaneli"></f:selectItem>
+                                <f:selectItem itemValue="Pazaryeri" itemLabel="Pazaryeri"></f:selectItem>
+                                <f:selectItem itemValue="Söğüt" itemLabel="Söğüt"></f:selectItem>
+                                <f:selectItem itemValue="Yenipazar" itemLabel="Yenipazar"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s12}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s12}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Adaklı" itemLabel="Adaklı"></f:selectItem>
+                                <f:selectItem itemValue="Genç" itemLabel="Genç"></f:selectItem>
+                                <f:selectItem itemValue="Karlıova" itemLabel="Karlıova"></f:selectItem>
+                                <f:selectItem itemValue="Kiğı" itemLabel="Kiğı"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Solhan" itemLabel="Solhan"></f:selectItem>
+                                <f:selectItem itemValue="Yayladere" itemLabel="Yayladere"></f:selectItem>
+                                <f:selectItem itemValue="Yedisu" itemLabel="Yedisu"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s13}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s13}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Adilcevaz" itemLabel="Adilcevaz"></f:selectItem>
+                                <f:selectItem itemValue="Ahlat" itemLabel="Ahlat"></f:selectItem>
+                                <f:selectItem itemValue="Güroymak" itemLabel="Güroymak"></f:selectItem>
+                                <f:selectItem itemValue="Hizan" itemLabel="Hizan"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Mutki" itemLabel="Mutki"></f:selectItem>
+                                <f:selectItem itemValue="Tatvan" itemLabel="Tatvan"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s14}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s14}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Dörtdivan" itemLabel="Dörtdivan"></f:selectItem>
+                                <f:selectItem itemValue="Gerede" itemLabel="Gerede"></f:selectItem>
+                                <f:selectItem itemValue="Göynük" itemLabel="Göynük"></f:selectItem>
+                                <f:selectItem itemValue="Kıbrıscık" itemLabel="Kıbrıscık"></f:selectItem>
+                                <f:selectItem itemValue="Mengen" itemLabel="Mengen"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Mudurnu" itemLabel="Mudurnu"></f:selectItem>
+                                <f:selectItem itemValue="Seben" itemLabel="Seben"></f:selectItem>
+                                <f:selectItem itemValue="Yeniçağa" itemLabel="Yeniçağa"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s15}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s15}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Ağlasun" itemLabel="Ağlasun"></f:selectItem>
+                                <f:selectItem itemValue="Altınyayla" itemLabel="Altınyayla"></f:selectItem>
+                                <f:selectItem itemValue="Bucak" itemLabel="Bucak"></f:selectItem>
+                                <f:selectItem itemValue="Çavdır" itemLabel="Çavdır"></f:selectItem>
+                                <f:selectItem itemValue="Çeltikçi" itemLabel="Çeltikçi"></f:selectItem>
+                                <f:selectItem itemValue="Gölhisar" itemLabel="Gölhisar"></f:selectItem>
+                                <f:selectItem itemValue="Karamanlı" itemLabel="Karamanlı"></f:selectItem>
+                                <f:selectItem itemValue="Kemer" itemLabel="Kemer"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Tefenni" itemLabel="Tefenni"></f:selectItem>
+                                <f:selectItem itemValue="Yeşilova" itemLabel="Yeşilova"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s16}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s16}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Büyükorhan" itemLabel="Büyükorhan"></f:selectItem>
+                                <f:selectItem itemValue="Gemlik" itemLabel="Gemlik"></f:selectItem>
+                                <f:selectItem itemValue="Gürsu" itemLabel="Gürsu"></f:selectItem>
+                                <f:selectItem itemValue="Harmancık" itemLabel="Harmancık"></f:selectItem>
+                                <f:selectItem itemValue="İnegöl" itemLabel="İnegöl"></f:selectItem>
+                                <f:selectItem itemValue="İznik" itemLabel="İznik"></f:selectItem>
+                                <f:selectItem itemValue="Karacabey" itemLabel="Karacabey"></f:selectItem>
+                                <f:selectItem itemValue="Keles" itemLabel="Keles"></f:selectItem>
+                                <f:selectItem itemValue="Kestel" itemLabel="Kestel"></f:selectItem>
+                                <f:selectItem itemValue="Mudanya" itemLabel="Mudanya"></f:selectItem>
+                                <f:selectItem itemValue="Mustafakemalpaşa" itemLabel="Mustafakemalpaşa"></f:selectItem>
+                                <f:selectItem itemValue="Nilüfer" itemLabel="Nilüfer"></f:selectItem>
+                                <f:selectItem itemValue="Orhaneli" itemLabel="Orhaneli"></f:selectItem>
+                                <f:selectItem itemValue="Orhangazi" itemLabel="Orhangazi"></f:selectItem>
+                                <f:selectItem itemValue="Osmangazi" itemLabel="Osmangazi"></f:selectItem>
+                                <f:selectItem itemValue="Yenişehir" itemLabel="Yenişehir"></f:selectItem>
+                                <f:selectItem itemValue="Yıldırım" itemLabel="Yıldırım"></f:selectItem>
+
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s17}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s17}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Ayvacık" itemLabel="Ayvacık"></f:selectItem>
+                                <f:selectItem itemValue="Bayramiç" itemLabel="Bayramiç"></f:selectItem>
+                                <f:selectItem itemValue="Biga" itemLabel="Biga"></f:selectItem>
+                                <f:selectItem itemValue="Bozcaada" itemLabel="Bozcaada"></f:selectItem>
+                                <f:selectItem itemValue="Çan" itemLabel="Çan"></f:selectItem>
+                                <f:selectItem itemValue="Eceabat" itemLabel="Eceabat"></f:selectItem>
+                                <f:selectItem itemValue="Ezine" itemLabel="Ezine"></f:selectItem>
+                                <f:selectItem itemValue="Gelibolu" itemLabel="Gelibolu"></f:selectItem>
+                                <f:selectItem itemValue="Gökçeada" itemLabel="Gökçeada"></f:selectItem>
+                                <f:selectItem itemValue="Lapseki" itemLabel="Lapseki"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Yenice" itemLabel="Yenice"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s18}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s18}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Atkaracalar" itemLabel="Atkaracalar"></f:selectItem>
+                                <f:selectItem itemValue="Bayramören" itemLabel="Bayramören"></f:selectItem>
+                                <f:selectItem itemValue="Çerkeş" itemLabel="Çerkeş"></f:selectItem>
+                                <f:selectItem itemValue="Eldivan" itemLabel="Eldivan"></f:selectItem>
+                                <f:selectItem itemValue="Ilgaz" itemLabel="Ilgaz"></f:selectItem>
+                                <f:selectItem itemValue="Kızılırmak" itemLabel="Kızılırmak"></f:selectItem>
+                                <f:selectItem itemValue="Korgun" itemLabel="Korgun"></f:selectItem>
+                                <f:selectItem itemValue="Kurşunlu" itemLabel="Kurşunlu"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Orta" itemLabel="Orta"></f:selectItem>
+                                <f:selectItem itemValue="Şabanözü" itemLabel="Şabanözü"></f:selectItem>
+                                <f:selectItem itemValue="Yapraklı" itemLabel="Yapraklı"></f:selectItem>
+
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s19}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s19}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Alaca" itemLabel="Alaca"></f:selectItem>
+                                <f:selectItem itemValue="Bayat" itemLabel="Bayat"></f:selectItem>
+                                <f:selectItem itemValue="Boğazkale" itemLabel="Boğazkale"></f:selectItem>
+                                <f:selectItem itemValue="Dodurga" itemLabel="Dodurga"></f:selectItem>
+                                <f:selectItem itemValue="İskilip" itemLabel="İskilip"></f:selectItem>
+                                <f:selectItem itemValue="Kargı" itemLabel="Kargı"></f:selectItem>
+                                <f:selectItem itemValue="Laçin" itemLabel="Laçin"></f:selectItem>
+                                <f:selectItem itemValue="Mecitözü" itemLabel="Mecitözü"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Oğuzlar" itemLabel="Oğuzlar"></f:selectItem>
+                                <f:selectItem itemValue="Ortaköy" itemLabel="Ortaköy"></f:selectItem>
+                                <f:selectItem itemValue="Osmancık" itemLabel="Osmancık"></f:selectItem>
+                                <f:selectItem itemValue="Sungurlu" itemLabel="Sungurlu"></f:selectItem>
+                                <f:selectItem itemValue="Uğurludağ" itemLabel="Uğurludağ"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s20}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s20}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Acıpayam" itemLabel="Acıpayam"></f:selectItem>
+                                <f:selectItem itemValue="Babadağ" itemLabel="Babadağ"></f:selectItem>
+                                <f:selectItem itemValue="Baklan" itemLabel="Baklan"></f:selectItem>
+                                <f:selectItem itemValue="Bekilli" itemLabel="Bekilli"></f:selectItem>
+                                <f:selectItem itemValue="Beyağaç" itemLabel="Beyağaç"></f:selectItem>
+                                <f:selectItem itemValue="Bozkurt" itemLabel="Bozkurt"></f:selectItem>
+                                <f:selectItem itemValue="Buldan" itemLabel="Buldan"></f:selectItem>
+                                <f:selectItem itemValue="Çal" itemLabel="Çal"></f:selectItem>
+                                <f:selectItem itemValue="Çameli" itemLabel="Çameli"></f:selectItem>
+                                <f:selectItem itemValue="Çardak" itemLabel="Çardak"></f:selectItem>
+                                <f:selectItem itemValue="Çivril" itemLabel="Çivril"></f:selectItem>
+                                <f:selectItem itemValue="Güney" itemLabel="Güney"></f:selectItem>
+                                <f:selectItem itemValue="Honaz" itemLabel="Honaz"></f:selectItem>
+                                <f:selectItem itemValue="Kale" itemLabel="Kale"></f:selectItem>
+                                <f:selectItem itemValue="Merkezefendi" itemLabel="Merkezefendi"></f:selectItem>
+                                <f:selectItem itemValue="Pamukkale" itemLabel="Pamukkale"></f:selectItem>
+                                <f:selectItem itemValue="Sarayköy" itemLabel="Sarayköy"></f:selectItem>
+                                <f:selectItem itemValue="Serinhisar" itemLabel="Serinhisar"></f:selectItem>
+                                <f:selectItem itemValue="Tavas" itemLabel="Tavas"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s21}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s21}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Bağlar" itemLabel="Bağlar"></f:selectItem>
+                                <f:selectItem itemValue="Bismil" itemLabel="Bismil"></f:selectItem>
+                                <f:selectItem itemValue="Çermik" itemLabel="Çermik"></f:selectItem>
+                                <f:selectItem itemValue="Çınar" itemLabel="Çınar"></f:selectItem>
+                                <f:selectItem itemValue="Çüngüş" itemLabel="Çüngüş"></f:selectItem>
+                                <f:selectItem itemValue="Dicle" itemLabel="Dicle"></f:selectItem>
+                                <f:selectItem itemValue="Eğil" itemLabel="Eğil"></f:selectItem>
+                                <f:selectItem itemValue="Ergani" itemLabel="Ergani"></f:selectItem>
+                                <f:selectItem itemValue="Hani" itemLabel="Hani"></f:selectItem>
+                                <f:selectItem itemValue="Hazro" itemLabel="Hazro"></f:selectItem>
+                                <f:selectItem itemValue="Kayapınar" itemLabel="Kayapınar"></f:selectItem>
+                                <f:selectItem itemValue="Kocaköy" itemLabel="Kocaköy"></f:selectItem>
+                                <f:selectItem itemValue="Kulp" itemLabel="Kulp"></f:selectItem>
+                                <f:selectItem itemValue="Lice" itemLabel="Lice"></f:selectItem>
+                                <f:selectItem itemValue="Silvan" itemLabel="Silvan"></f:selectItem>
+                                <f:selectItem itemValue="Sur" itemLabel="Sur"></f:selectItem>
+                                <f:selectItem itemValue="Yenişehir" itemLabel="Yenişehir"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s22}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s22}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Enez" itemLabel="Enez"></f:selectItem>
+                                <f:selectItem itemValue="Havsa" itemLabel="Havsa"></f:selectItem>
+                                <f:selectItem itemValue="İpsala" itemLabel="İpsala"></f:selectItem>
+                                <f:selectItem itemValue="Keşan" itemLabel="Keşan"></f:selectItem>
+                                <f:selectItem itemValue="Lalapaşa" itemLabel="Lalapaşa"></f:selectItem>
+                                <f:selectItem itemValue="Meriç" itemLabel="Meriç"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Süloğlu" itemLabel="Süloğlu"></f:selectItem>
+                                <f:selectItem itemValue="Uzunköprü" itemLabel="Uzunköprü"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s23}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s23}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Ağın" itemLabel="Ağın"></f:selectItem>
+                                <f:selectItem itemValue="Alacakaya" itemLabel="Alacakaya"></f:selectItem>
+                                <f:selectItem itemValue="Arıcak" itemLabel="Arıcak"></f:selectItem>
+                                <f:selectItem itemValue="Baskil" itemLabel="Baskil"></f:selectItem>
+                                <f:selectItem itemValue="Karakoçan" itemLabel="Karakoçan"></f:selectItem>
+                                <f:selectItem itemValue="Keban" itemLabel="Keban"></f:selectItem>
+                                <f:selectItem itemValue="Kovancılar" itemLabel="Kovancılar"></f:selectItem>
+                                <f:selectItem itemValue="Maden" itemLabel="Maden"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Palu" itemLabel="Palu"></f:selectItem>
+                                <f:selectItem itemValue="Sivrice" itemLabel="Sivrice"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s24}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s24}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Çayırlı" itemLabel="Çayırlı"></f:selectItem>
+                                <f:selectItem itemValue="İliç" itemLabel="İliç"></f:selectItem>
+                                <f:selectItem itemValue="Kemah" itemLabel="Kemah"></f:selectItem>
+                                <f:selectItem itemValue="Kemaliye" itemLabel="Kemaliye"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Otlukbeli" itemLabel="Otlukbeli"></f:selectItem>
+                                <f:selectItem itemValue="Refahiye" itemLabel="Refahiye"></f:selectItem>
+                                <f:selectItem itemValue="Tercan" itemLabel="Tercan"></f:selectItem>
+                                <f:selectItem itemValue="Üzümlü" itemLabel="Üzümlü"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s25}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s25}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Aşkale" itemLabel="Aşkale"></f:selectItem>
+                                <f:selectItem itemValue="Aziziye" itemLabel="Aziziye"></f:selectItem>
+                                <f:selectItem itemValue="Çat" itemLabel="Çat"></f:selectItem>
+                                <f:selectItem itemValue="Hınıs" itemLabel="Hınıs"></f:selectItem>
+                                <f:selectItem itemValue="Horasan" itemLabel="Horasan"></f:selectItem>
+                                <f:selectItem itemValue="İspir" itemLabel="İspir"></f:selectItem>
+                                <f:selectItem itemValue="Karaçoban" itemLabel="Karaçoban"></f:selectItem>
+                                <f:selectItem itemValue="Karayazı" itemLabel="Karayazı"></f:selectItem>
+                                <f:selectItem itemValue="Köprüköy" itemLabel="Köprüköy"></f:selectItem>
+                                <f:selectItem itemValue="Narman" itemLabel="Narman"></f:selectItem>
+                                <f:selectItem itemValue="Oltu" itemLabel="Oltu"></f:selectItem>
+                                <f:selectItem itemValue="Olur" itemLabel="Olur"></f:selectItem>
+                                <f:selectItem itemValue="Palandöken" itemLabel="Palandöken"></f:selectItem>
+                                <f:selectItem itemValue="Pasinler" itemLabel="Pasinler"></f:selectItem>
+                                <f:selectItem itemValue="Pazaryolu" itemLabel="Pazaryolu"></f:selectItem>
+                                <f:selectItem itemValue="Şenkaya" itemLabel="Şenkaya"></f:selectItem>
+                                <f:selectItem itemValue="Tekman" itemLabel="Tekman"></f:selectItem>
+                                <f:selectItem itemValue="Tortum" itemLabel="Tortum"></f:selectItem>
+                                <f:selectItem itemValue="Uzundere" itemLabel="Uzundere"></f:selectItem>
+                                <f:selectItem itemValue="Yakutiye" itemLabel="Yakutiye"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s26}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s26}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Alpu" itemLabel="Alpu"></f:selectItem>
+                                <f:selectItem itemValue="Beylikova" itemLabel="Beylikova"></f:selectItem>
+                                <f:selectItem itemValue="Çifteler" itemLabel="Çifteler"></f:selectItem>
+                                <f:selectItem itemValue="Günyüzü" itemLabel="Günyüzü"></f:selectItem>
+                                <f:selectItem itemValue="Han" itemLabel="Han"></f:selectItem>
+                                <f:selectItem itemValue="İnönü" itemLabel="İnönü"></f:selectItem>
+                                <f:selectItem itemValue="Mahmudiye" itemLabel="Mahmudiye"></f:selectItem>
+                                <f:selectItem itemValue="Mihalgazi" itemLabel="Mihalgazi"></f:selectItem>
+                                <f:selectItem itemValue="Mihalıççık" itemLabel="Mihalıççık"></f:selectItem>
+                                <f:selectItem itemValue="Odunpazarı" itemLabel="Odunpazarı"></f:selectItem>
+                                <f:selectItem itemValue="Sarıcakaya" itemLabel="Sarıcakaya"></f:selectItem>
+                                <f:selectItem itemValue="Seyitgazi" itemLabel="Seyitgazi"></f:selectItem>
+                                <f:selectItem itemValue="Sivrihisar" itemLabel="Sivrihisar"></f:selectItem>
+                                <f:selectItem itemValue="Tepebaşı" itemLabel="Tepebaşı"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s27}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s27}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Araban" itemLabel="Araban"></f:selectItem>
+                                <f:selectItem itemValue="İslahiye" itemLabel="İslahiye"></f:selectItem>
+                                <f:selectItem itemValue="Karkamış" itemLabel="Karkamış"></f:selectItem>
+                                <f:selectItem itemValue="Nizip" itemLabel="Nizip"></f:selectItem>
+                                <f:selectItem itemValue="Nurdağı" itemLabel="Nurdağı"></f:selectItem>
+                                <f:selectItem itemValue="Oğuzeli" itemLabel="Oğuzeli"></f:selectItem>
+                                <f:selectItem itemValue="Şahinbey" itemLabel="Şahinbey"></f:selectItem>
+                                <f:selectItem itemValue="Şehitkamil" itemLabel="Şehitkamil"></f:selectItem>
+                                <f:selectItem itemValue="Yavuzeli" itemLabel="Yavuzeli"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s28}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s28}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Alucra" itemLabel="Alucra"></f:selectItem>
+                                <f:selectItem itemValue="Bulancak" itemLabel="Bulancak"></f:selectItem>
+                                <f:selectItem itemValue="Çamoluk" itemLabel="Çamoluk"></f:selectItem>
+                                <f:selectItem itemValue="Çanakçı" itemLabel="Çanakçı"></f:selectItem>
+                                <f:selectItem itemValue="Dereli" itemLabel="Dereli"></f:selectItem>
+                                <f:selectItem itemValue="Doğankent" itemLabel="Doğankent"></f:selectItem>
+                                <f:selectItem itemValue="Espiye" itemLabel="Espiye"></f:selectItem>
+                                <f:selectItem itemValue="Eynesil" itemLabel="Eynesil"></f:selectItem>
+                                <f:selectItem itemValue="Görele" itemLabel="Görele"></f:selectItem>
+                                <f:selectItem itemValue="Güce" itemLabel="Güce"></f:selectItem>
+                                <f:selectItem itemValue="Keşap" itemLabel="Keşap"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Piraziz" itemLabel="Piraziz"></f:selectItem>
+                                <f:selectItem itemValue="Şebinkarahisar" itemLabel="Şebinkarahisar"></f:selectItem>
+                                <f:selectItem itemValue="Tirebolu" itemLabel="Tirebolu"></f:selectItem>
+                                <f:selectItem itemValue="Yağlıdere" itemLabel="Yağlıdere"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s29}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s29}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Kelkit" itemLabel="Kelkit"></f:selectItem>
+                                <f:selectItem itemValue="Köse" itemLabel="Köse"></f:selectItem>
+                                <f:selectItem itemValue="Kürtün" itemLabel="Kürtün"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Şiran" itemLabel="Şiran"></f:selectItem>
+                                <f:selectItem itemValue="Torul" itemLabel="Torul"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s30}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s30}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Çukurca" itemLabel="Çukurca"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Şemdinli" itemLabel="Şemdinli"></f:selectItem>
+                                <f:selectItem itemValue="Yüksekova" itemLabel="Yüksekova"></f:selectItem>
+
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s31}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s31}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Altınözü" itemLabel="Altınözü"></f:selectItem>
+                                <f:selectItem itemValue="Antakya" itemLabel="Antakya"></f:selectItem>
+                                <f:selectItem itemValue="Arsuz" itemLabel="Arsuz"></f:selectItem>
+                                <f:selectItem itemValue="Belen" itemLabel="Belen"></f:selectItem>
+                                <f:selectItem itemValue="Defne" itemLabel="Defne"></f:selectItem>
+                                <f:selectItem itemValue="Dörtyol" itemLabel="Dörtyol"></f:selectItem>
+                                <f:selectItem itemValue="Erzin" itemLabel="Erzin"></f:selectItem>
+                                <f:selectItem itemValue="Hassa" itemLabel="Hassa"></f:selectItem>
+                                <f:selectItem itemValue="İskenderun" itemLabel="İskenderun"></f:selectItem>
+                                <f:selectItem itemValue="Kırıkhan" itemLabel="Kırıkhan"></f:selectItem>
+                                <f:selectItem itemValue="Kumlu" itemLabel="Kumlu"></f:selectItem>
+                                <f:selectItem itemValue="Payas" itemLabel="Payas"></f:selectItem>
+                                <f:selectItem itemValue="Reyhanlı" itemLabel="Reyhanlı"></f:selectItem>
+                                <f:selectItem itemValue="Samandağ" itemLabel="Samandağ"></f:selectItem>
+                                <f:selectItem itemValue="Yayladağı" itemLabel="Yayladağı"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s32}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s32}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Aksu" itemLabel="Aksu"></f:selectItem>
+                                <f:selectItem itemValue="Atabey" itemLabel="Atabey"></f:selectItem>
+                                <f:selectItem itemValue="Eğirdir" itemLabel="Eğirdir"></f:selectItem>
+                                <f:selectItem itemValue="Gelendost" itemLabel="Gelendost"></f:selectItem>
+                                <f:selectItem itemValue="Gönen" itemLabel="Gönen"></f:selectItem>
+                                <f:selectItem itemValue="Keçiborlu" itemLabel="Keçiborlu"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Şarkikaraağaç" itemLabel="Şarkikaraağaç"></f:selectItem>
+                                <f:selectItem itemValue="Senirkent" itemLabel="Senirkent"></f:selectItem>
+                                <f:selectItem itemValue="Sütçüler" itemLabel="Sütçüler"></f:selectItem>
+                                <f:selectItem itemValue="Uluborlu" itemLabel="Uluborlu"></f:selectItem>
+                                <f:selectItem itemValue="Yalvaç" itemLabel="Yalvaç"></f:selectItem>
+                                <f:selectItem itemValue="Yenişarbademli" itemLabel="Yenişarbademli"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s33}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s33}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Akdeniz" itemLabel="Akdeniz"></f:selectItem>
+                                <f:selectItem itemValue="Anamur" itemLabel="Anamur"></f:selectItem>
+                                <f:selectItem itemValue="Aydıncık" itemLabel="Aydıncık"></f:selectItem>
+                                <f:selectItem itemValue="Bozyazı" itemLabel="Bozyazı"></f:selectItem>
+                                <f:selectItem itemValue="Çamlıyayla" itemLabel="Çamlıyayla"></f:selectItem>
+                                <f:selectItem itemValue="Erdemli" itemLabel="Erdemli"></f:selectItem>
+                                <f:selectItem itemValue="Gülnar" itemLabel="Gülnar"></f:selectItem>
+                                <f:selectItem itemValue="Mezitli" itemLabel="Mezitli"></f:selectItem>
+                                <f:selectItem itemValue="Mut" itemLabel="Mut"></f:selectItem>
+                                <f:selectItem itemValue="Silifke" itemLabel="Silifke"></f:selectItem>
+                                <f:selectItem itemValue="Tarsus" itemLabel="Tarsus"></f:selectItem>
+                                <f:selectItem itemValue="Toroslar" itemLabel="Toroslar"></f:selectItem>
+                                <f:selectItem itemValue="Yenişehir" itemLabel="Yenişehir"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s34}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s34}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Adalar" itemLabel="Adalar"></f:selectItem>
+                                <f:selectItem itemValue="Arnavutköy" itemLabel="Arnavutköy"></f:selectItem>
+                                <f:selectItem itemValue="Ataşehir" itemLabel="Ataşehir"></f:selectItem>
+                                <f:selectItem itemValue="Avcılar" itemLabel="Avcılar"></f:selectItem>
+                                <f:selectItem itemValue="Bağcılar" itemLabel="Bağcılar"></f:selectItem>
+                                <f:selectItem itemValue="Bahçelievler" itemLabel="Bahçelievler"></f:selectItem>
+                                <f:selectItem itemValue="Bakırköy" itemLabel="Bakırköy"></f:selectItem>
+                                <f:selectItem itemValue="Başakşehir" itemLabel="Başakşehir"></f:selectItem>
+                                <f:selectItem itemValue="Bayrampaşa" itemLabel="Bayrampaşa"></f:selectItem>
+                                <f:selectItem itemValue="Beşiktaş" itemLabel="Beşiktaş"></f:selectItem>
+                                <f:selectItem itemValue="Beykoz" itemLabel="Beykoz"></f:selectItem>
+                                <f:selectItem itemValue="Beylikdüzü" itemLabel="Beylikdüzü"></f:selectItem>
+                                <f:selectItem itemValue="Beyoğlu" itemLabel="Beyoğlu"></f:selectItem>
+                                <f:selectItem itemValue="Büyükçekmece" itemLabel="Büyükçekmece"></f:selectItem>
+                                <f:selectItem itemValue="Çatalca" itemLabel="Çatalca"></f:selectItem>
+                                <f:selectItem itemValue="Çekmeköy" itemLabel="Çekmeköy"></f:selectItem>
+                                <f:selectItem itemValue="Esenler" itemLabel="Esenler"></f:selectItem>
+                                <f:selectItem itemValue="Esenyurt" itemLabel="Esenyurt"></f:selectItem>
+                                <f:selectItem itemValue="Eyüp" itemLabel="Eyüp"></f:selectItem>
+                                <f:selectItem itemValue="Fatih" itemLabel="Fatih"></f:selectItem>
+                                <f:selectItem itemValue="Gaziosmanpaşa" itemLabel="Gaziosmanpaşa"></f:selectItem>
+                                <f:selectItem itemValue="Güngören" itemLabel="Güngören"></f:selectItem>
+                                <f:selectItem itemValue="Kadıköy" itemLabel="Kadıköy"></f:selectItem>
+                                <f:selectItem itemValue="Kağıthane" itemLabel="Kağıthane"></f:selectItem>
+                                <f:selectItem itemValue="Kartal" itemLabel="Kartal"></f:selectItem>
+                                <f:selectItem itemValue="Küçükçekmece" itemLabel="Küçükçekmece"></f:selectItem>
+                                <f:selectItem itemValue="Maltepe" itemLabel="Maltepe"></f:selectItem>
+                                <f:selectItem itemValue="Pendik" itemLabel="Pendik"></f:selectItem>
+                                <f:selectItem itemValue="Sancaktepe" itemLabel="Sancaktepe"></f:selectItem>
+                                <f:selectItem itemValue="Sarıyer" itemLabel="Sarıyer"></f:selectItem>
+                                <f:selectItem itemValue="Şile" itemLabel="Şile"></f:selectItem>
+                                <f:selectItem itemValue="Silivri" itemLabel="Silivri"></f:selectItem>
+                                <f:selectItem itemValue="Şişli" itemLabel="Şişli"></f:selectItem>
+                                <f:selectItem itemValue="Sultanbeyli" itemLabel="Sultanbeyli"></f:selectItem>
+                                <f:selectItem itemValue="Sultangazi" itemLabel="Sultangazi"></f:selectItem>
+                                <f:selectItem itemValue="Tuzla" itemLabel="Tuzla"></f:selectItem>
+                                <f:selectItem itemValue="Ümraniye" itemLabel="Ümraniye"></f:selectItem>
+                                <f:selectItem itemValue="Üsküdar" itemLabel="Üsküdar"></f:selectItem>
+                                <f:selectItem itemValue="Zeytinburnu" itemLabel="Zeytinburnu"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s35}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s35}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Aliağa" itemLabel="Aliağa"></f:selectItem>
+                                <f:selectItem itemValue="Balçova" itemLabel="Balçova"></f:selectItem>
+                                <f:selectItem itemValue="Bayındır" itemLabel="Bayındır"></f:selectItem>
+                                <f:selectItem itemValue="Bayraklı" itemLabel="Bayraklı"></f:selectItem>
+                                <f:selectItem itemValue="Bergama" itemLabel="Bergama"></f:selectItem>
+                                <f:selectItem itemValue="Beydağ" itemLabel="Beydağ"></f:selectItem>
+                                <f:selectItem itemValue="Bornova" itemLabel="Bornova"></f:selectItem>
+                                <f:selectItem itemValue="Buca" itemLabel="Buca"></f:selectItem>
+                                <f:selectItem itemValue="Çeşme" itemLabel="Çeşme"></f:selectItem>
+                                <f:selectItem itemValue="Çiğli" itemLabel="Çiğli"></f:selectItem>
+                                <f:selectItem itemValue="Dikili" itemLabel="Dikili"></f:selectItem>
+                                <f:selectItem itemValue="Foça" itemLabel="Foça"></f:selectItem>
+                                <f:selectItem itemValue="Gaziemir" itemLabel="Gaziemir"></f:selectItem>
+                                <f:selectItem itemValue="Güzelbahçe" itemLabel="Güzelbahçe"></f:selectItem>
+                                <f:selectItem itemValue="Karabağlar" itemLabel="Karabağlar"></f:selectItem>
+                                <f:selectItem itemValue="Karaburun" itemLabel="Karaburun"></f:selectItem>
+                                <f:selectItem itemValue="Karşıyaka" itemLabel="Karşıyaka"></f:selectItem>
+                                <f:selectItem itemValue="Kemalpaşa" itemLabel="Kemalpaşa"></f:selectItem>
+                                <f:selectItem itemValue="Kınık" itemLabel="Kınık"></f:selectItem>
+                                <f:selectItem itemValue="Kiraz" itemLabel="Kiraz"></f:selectItem>
+                                <f:selectItem itemValue="Konak" itemLabel="Konak"></f:selectItem>
+                                <f:selectItem itemValue="Menderes" itemLabel="Menderes"></f:selectItem>
+                                <f:selectItem itemValue="Menemen" itemLabel="Menemen"></f:selectItem>
+                                <f:selectItem itemValue="Narlıdere" itemLabel="Narlıdere"></f:selectItem>
+                                <f:selectItem itemValue="Ödemiş" itemLabel="Ödemiş"></f:selectItem>
+                                <f:selectItem itemValue="Seferihisar" itemLabel="Seferihisar"></f:selectItem>
+                                <f:selectItem itemValue="Selçuk" itemLabel="Selçuk"></f:selectItem>
+                                <f:selectItem itemValue="Tire" itemLabel="Tire"></f:selectItem>
+                                <f:selectItem itemValue="Torbalı" itemLabel="Torbalı"></f:selectItem>
+                                <f:selectItem itemValue="Urla" itemLabel="Urla"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s36}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s36}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Akyaka" itemLabel="Akyaka"></f:selectItem>
+                                <f:selectItem itemValue="Arpaçay" itemLabel="Arpaçay"></f:selectItem>
+                                <f:selectItem itemValue="Digor" itemLabel="Digor"></f:selectItem>
+                                <f:selectItem itemValue="Kağızman" itemLabel="Kağızman"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Sarıkamış" itemLabel="Sarıkamış"></f:selectItem>
+                                <f:selectItem itemValue="Selim" itemLabel="Selim"></f:selectItem>
+                                <f:selectItem itemValue="Susuz" itemLabel="Susuz"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s37}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s37}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Abana" itemLabel="Abana"></f:selectItem>
+                                <f:selectItem itemValue="Ağlı" itemLabel="Ağlı"></f:selectItem>
+                                <f:selectItem itemValue="Araç" itemLabel="Araç"></f:selectItem>
+                                <f:selectItem itemValue="Azdavay" itemLabel="Azdavay"></f:selectItem>
+                                <f:selectItem itemValue="Bozkurt" itemLabel="Bozkurt"></f:selectItem>
+                                <f:selectItem itemValue="Çatalzeytin" itemLabel="Çatalzeytin"></f:selectItem>
+                                <f:selectItem itemValue="Cide" itemLabel="Cide"></f:selectItem>
+                                <f:selectItem itemValue="Daday" itemLabel="Daday"></f:selectItem>
+                                <f:selectItem itemValue="Devrekani" itemLabel="Devrekani"></f:selectItem>
+                                <f:selectItem itemValue="Doğanyurt" itemLabel="Doğanyurt"></f:selectItem>
+                                <f:selectItem itemValue="Hanönü" itemLabel="Hanönü"></f:selectItem>
+                                <f:selectItem itemValue="İhsangazi" itemLabel="İhsangazi"></f:selectItem>
+                                <f:selectItem itemValue="İnebolu" itemLabel="İnebolu"></f:selectItem>
+                                <f:selectItem itemValue="Küre" itemLabel="Küre"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Pınarbaşı" itemLabel="Pınarbaşı"></f:selectItem>
+                                <f:selectItem itemValue="Şenpazar" itemLabel="Şenpazar"></f:selectItem>
+                                <f:selectItem itemValue="Seydiler" itemLabel="Seydiler"></f:selectItem>
+                                <f:selectItem itemValue="Taşköprü" itemLabel="Taşköprü"></f:selectItem>
+                                <f:selectItem itemValue="Tosya" itemLabel="Tosya"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s38}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s38}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Akkışla" itemLabel="Akkışla"></f:selectItem>
+                                <f:selectItem itemValue="Bünyan" itemLabel="Bünyan"></f:selectItem>
+                                <f:selectItem itemValue="Develi" itemLabel="Develi"></f:selectItem>
+                                <f:selectItem itemValue="Felahiye" itemLabel="Felahiye"></f:selectItem>
+                                <f:selectItem itemValue="Hacılar" itemLabel="Hacılar"></f:selectItem>
+                                <f:selectItem itemValue="İncesu" itemLabel="İncesu"></f:selectItem>
+                                <f:selectItem itemValue="Kocasinan" itemLabel="Kocasinan"></f:selectItem>
+                                <f:selectItem itemValue="Melikgazi" itemLabel="Melikgazi"></f:selectItem>
+                                <f:selectItem itemValue="Özvatan" itemLabel="Özvatan"></f:selectItem>
+                                <f:selectItem itemValue="Pınarbaşı" itemLabel="Pınarbaşı"></f:selectItem>
+                                <f:selectItem itemValue="Sarıoğlan" itemLabel="Sarıoğlan"></f:selectItem>
+                                <f:selectItem itemValue="Sarız" itemLabel="Sarız"></f:selectItem>
+                                <f:selectItem itemValue="Talas" itemLabel="Talas"></f:selectItem>
+                                <f:selectItem itemValue="Tomarza" itemLabel="Tomarza"></f:selectItem>
+                                <f:selectItem itemValue="Yahyalı" itemLabel="Yahyalı"></f:selectItem>
+                                <f:selectItem itemValue="Yeşilhisar" itemLabel="Yeşilhisar"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s39}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s39}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Babaeski" itemLabel="Babaeski"></f:selectItem>
+                                <f:selectItem itemValue="Demirköy" itemLabel="Demirköy"></f:selectItem>
+                                <f:selectItem itemValue="Kofçaz" itemLabel="Kofçaz"></f:selectItem>
+                                <f:selectItem itemValue="Lüleburgaz" itemLabel="Lüleburgaz"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Pehlivanköy" itemLabel="Pehlivanköy"></f:selectItem>
+                                <f:selectItem itemValue="Pınarhisar" itemLabel="Pınarhisar"></f:selectItem>
+                                <f:selectItem itemValue="Vize" itemLabel="Vize"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s40}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s40}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Akçakent" itemLabel="Akçakent"></f:selectItem>
+                                <f:selectItem itemValue="Akpınar" itemLabel="Akpınar"></f:selectItem>
+                                <f:selectItem itemValue="Boztepe" itemLabel="Boztepe"></f:selectItem>
+                                <f:selectItem itemValue="Çiçekdağı" itemLabel="Çiçekdağı"></f:selectItem>
+                                <f:selectItem itemValue="Kaman" itemLabel="Kaman"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Mucur" itemLabel="Mucur"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s41}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s41}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Başiskele" itemLabel="Başiskele"></f:selectItem>
+                                <f:selectItem itemValue="Çayırova" itemLabel="Çayırova"></f:selectItem>
+                                <f:selectItem itemValue="Darıca" itemLabel="Darıca"></f:selectItem>
+                                <f:selectItem itemValue="Derince" itemLabel="Derince"></f:selectItem>
+                                <f:selectItem itemValue="Dilovası" itemLabel="Dilovası"></f:selectItem>
+                                <f:selectItem itemValue="Gebze" itemLabel="Gebze"></f:selectItem>
+                                <f:selectItem itemValue="Gölcük" itemLabel="Gölcük"></f:selectItem>
+                                <f:selectItem itemValue="İzmit" itemLabel="İzmit"></f:selectItem>
+                                <f:selectItem itemValue="Kandıra" itemLabel="Kandıra"></f:selectItem>
+                                <f:selectItem itemValue="Karamürsel" itemLabel="Karamürsel"></f:selectItem>
+                                <f:selectItem itemValue="Kartepe" itemLabel="Kartepe"></f:selectItem>
+                                <f:selectItem itemValue="Körfez" itemLabel="Körfez"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s42}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s42}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Ahırlı" itemLabel="Ahırlı"></f:selectItem>
+                                <f:selectItem itemValue="Akören" itemLabel="Akören"></f:selectItem>
+                                <f:selectItem itemValue="Akşehir" itemLabel="Akşehir"></f:selectItem>
+                                <f:selectItem itemValue="Altınekin" itemLabel="Altınekin"></f:selectItem>
+                                <f:selectItem itemValue="Beyşehir" itemLabel="Beyşehir"></f:selectItem>
+                                <f:selectItem itemValue="Bozkır" itemLabel="Bozkır"></f:selectItem>
+                                <f:selectItem itemValue="Çeltik" itemLabel="Çeltik"></f:selectItem>
+                                <f:selectItem itemValue="Cihanbeyli" itemLabel="Cihanbeyli"></f:selectItem>
+                                <f:selectItem itemValue="Çumra" itemLabel="Çumra"></f:selectItem>
+                                <f:selectItem itemValue="Derbent" itemLabel="Derbent"></f:selectItem>
+                                <f:selectItem itemValue="Derebucak" itemLabel="Derebucak"></f:selectItem>
+                                <f:selectItem itemValue="Doğanhisar" itemLabel="Doğanhisar"></f:selectItem>
+                                <f:selectItem itemValue="Emirgazi" itemLabel="Emirgazi"></f:selectItem>
+                                <f:selectItem itemValue="Ereğli" itemLabel="Ereğli"></f:selectItem>
+                                <f:selectItem itemValue="Güneysınır" itemLabel="Güneysınır"></f:selectItem>
+                                <f:selectItem itemValue="Hadim" itemLabel="Hadim"></f:selectItem>
+                                <f:selectItem itemValue="Halkapınar" itemLabel="Halkapınar"></f:selectItem>
+                                <f:selectItem itemValue="Hüyük" itemLabel="Hüyük"></f:selectItem>
+                                <f:selectItem itemValue="Ilgın" itemLabel="Ilgın"></f:selectItem>
+                                <f:selectItem itemValue="Kadınhanı" itemLabel="Kadınhanı"></f:selectItem>
+                                <f:selectItem itemValue="Karapınar" itemLabel="Karapınar"></f:selectItem>
+                                <f:selectItem itemValue="Karatay" itemLabel="Karatay"></f:selectItem>
+                                <f:selectItem itemValue="Kulu" itemLabel="Kulu"></f:selectItem>
+                                <f:selectItem itemValue="Meram" itemLabel="Meram"></f:selectItem>
+                                <f:selectItem itemValue="Sarayönü" itemLabel="Sarayönü"></f:selectItem>
+                                <f:selectItem itemValue="Selçuklu" itemLabel="Selçuklu"></f:selectItem>
+                                <f:selectItem itemValue="Seydişehir" itemLabel="Seydişehir"></f:selectItem>
+                                <f:selectItem itemValue="Taşkent" itemLabel="Taşkent"></f:selectItem>
+                                <f:selectItem itemValue="Tuzlukçu" itemLabel="Tuzlukçu"></f:selectItem>
+                                <f:selectItem itemValue="Yalıhüyük" itemLabel="Yalıhüyük"></f:selectItem>
+                                <f:selectItem itemValue="Yunak" itemLabel="Yunak"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s43}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s43}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Altıntaş" itemLabel="Altıntaş"></f:selectItem>
+                                <f:selectItem itemValue="Aslanapa" itemLabel="Aslanapa"></f:selectItem>
+                                <f:selectItem itemValue="Çavdarhisar" itemLabel="Çavdarhisar"></f:selectItem>
+                                <f:selectItem itemValue="Domaniç" itemLabel="Domaniç"></f:selectItem>
+                                <f:selectItem itemValue="Dumlupınar" itemLabel="Dumlupınar"></f:selectItem>
+                                <f:selectItem itemValue="Emet" itemLabel="Emet"></f:selectItem>
+                                <f:selectItem itemValue="Gediz" itemLabel="Gediz"></f:selectItem>
+                                <f:selectItem itemValue="Hisarcık" itemLabel="Hisarcık"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Pazarlar" itemLabel="Pazarlar"></f:selectItem>
+                                <f:selectItem itemValue="Şaphane" itemLabel="Şaphane"></f:selectItem>
+                                <f:selectItem itemValue="Simav" itemLabel="Simav"></f:selectItem>
+                                <f:selectItem itemValue="Tavşanlı" itemLabel="Tavşanlı"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s44}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s44}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Akçadağ" itemLabel="Akçadağ"></f:selectItem>
+                                <f:selectItem itemValue="Arapgir" itemLabel="Arapgir"></f:selectItem>
+                                <f:selectItem itemValue="Arguvan" itemLabel="Arguvan"></f:selectItem>
+                                <f:selectItem itemValue="Battalgazi" itemLabel="Battalgazi"></f:selectItem>
+                                <f:selectItem itemValue="Darende" itemLabel="Darende"></f:selectItem>
+                                <f:selectItem itemValue="Doğanşehir" itemLabel="Doğanşehir"></f:selectItem>
+                                <f:selectItem itemValue="Doğanyol" itemLabel="Doğanyol"></f:selectItem>
+                                <f:selectItem itemValue="Hekimhan" itemLabel="Hekimhan"></f:selectItem>
+                                <f:selectItem itemValue="Kale" itemLabel="Kale"></f:selectItem>
+                                <f:selectItem itemValue="Kuluncak" itemLabel="Kuluncak"></f:selectItem>
+                                <f:selectItem itemValue="Pütürge" itemLabel="Pütürge"></f:selectItem>
+                                <f:selectItem itemValue="Yazıhan" itemLabel="Yazıhan"></f:selectItem>
+                                <f:selectItem itemValue="Yeşilyurt" itemLabel="Yeşilyurt"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s45}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s45}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Ahmetli" itemLabel="Ahmetli"></f:selectItem>
+                                <f:selectItem itemValue="Akhisar" itemLabel="Akhisar"></f:selectItem>
+                                <f:selectItem itemValue="Alaşehir" itemLabel="Alaşehir"></f:selectItem>
+                                <f:selectItem itemValue="Demirci" itemLabel="Demirci"></f:selectItem>
+                                <f:selectItem itemValue="Gölmarmara" itemLabel="Gölmarmara"></f:selectItem>
+                                <f:selectItem itemValue="Gördes" itemLabel="Gördes"></f:selectItem>
+                                <f:selectItem itemValue="Kırkağaç" itemLabel="Kırkağaç"></f:selectItem>
+                                <f:selectItem itemValue="Köprübaşı" itemLabel="Köprübaşı"></f:selectItem>
+                                <f:selectItem itemValue="Kula" itemLabel="Kula"></f:selectItem>
+                                <f:selectItem itemValue="Salihli" itemLabel="Salihli"></f:selectItem>
+                                <f:selectItem itemValue="Sarıgöl" itemLabel="Sarıgöl"></f:selectItem>
+                                <f:selectItem itemValue="Saruhanlı" itemLabel="Saruhanlı"></f:selectItem>
+                                <f:selectItem itemValue="Şehzadeler" itemLabel="Şehzadeler"></f:selectItem>
+                                <f:selectItem itemValue="Selendi" itemLabel="Selendi"></f:selectItem>
+                                <f:selectItem itemValue="Soma" itemLabel="Soma"></f:selectItem>
+                                <f:selectItem itemValue="Turgutlu" itemLabel="Turgutlu"></f:selectItem>
+                                <f:selectItem itemValue="Yunusemre" itemLabel="Yunusemre"></f:selectItem>
+
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s46}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s46}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Afşin" itemLabel="Afşin"></f:selectItem>
+                                <f:selectItem itemValue="Andırın" itemLabel="Andırın"></f:selectItem>
+                                <f:selectItem itemValue="Çağlayancerit" itemLabel="Çağlayancerit"></f:selectItem>
+                                <f:selectItem itemValue="Dulkadiroğlu" itemLabel="Dulkadiroğlu"></f:selectItem>
+                                <f:selectItem itemValue="Ekinözü" itemLabel="Ekinözü"></f:selectItem>
+                                <f:selectItem itemValue="Elbistan" itemLabel="Elbistan"></f:selectItem>
+                                <f:selectItem itemValue="Göksun" itemLabel="Göksun"></f:selectItem>
+                                <f:selectItem itemValue="Nurhak" itemLabel="Nurhak"></f:selectItem>
+                                <f:selectItem itemValue="Onikişubat" itemLabel="Onikişubat"></f:selectItem>
+                                <f:selectItem itemValue="Pazarcık" itemLabel="Pazarcık"></f:selectItem>
+                                <f:selectItem itemValue="Türkoğlu" itemLabel="Türkoğlu"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s47}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s47}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Artuklu" itemLabel="Artuklu"></f:selectItem>
+                                <f:selectItem itemValue="Dargeçit" itemLabel="Dargeçit"></f:selectItem>
+                                <f:selectItem itemValue="Derik" itemLabel="Derik"></f:selectItem>
+                                <f:selectItem itemValue="Kızıltepe" itemLabel="Kızıltepe"></f:selectItem>
+                                <f:selectItem itemValue="Mazıdağı" itemLabel="Mazıdağı"></f:selectItem>
+                                <f:selectItem itemValue="Midyat" itemLabel="Midyat"></f:selectItem>
+                                <f:selectItem itemValue="Nusaybin" itemLabel="Nusaybin"></f:selectItem>
+                                <f:selectItem itemValue="Ömerli" itemLabel="Ömerli"></f:selectItem>
+                                <f:selectItem itemValue="Savur" itemLabel="Savur"></f:selectItem>
+                                <f:selectItem itemValue="Yeşilli" itemLabel="Yeşilli"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s48}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s48}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Bodrum" itemLabel="Bodrum"></f:selectItem>
+                                <f:selectItem itemValue="Dalaman" itemLabel="Dalaman"></f:selectItem>
+                                <f:selectItem itemValue="Datça" itemLabel="Datça"></f:selectItem>
+                                <f:selectItem itemValue="Fethiye" itemLabel="Fethiye"></f:selectItem>
+                                <f:selectItem itemValue="Kavaklıdere" itemLabel="Kavaklıdere"></f:selectItem>
+                                <f:selectItem itemValue="Köyceğiz" itemLabel="Köyceğiz"></f:selectItem>
+                                <f:selectItem itemValue="Marmaris" itemLabel="Marmaris"></f:selectItem>
+                                <f:selectItem itemValue="Menteşe" itemLabel="Menteşe"></f:selectItem>
+                                <f:selectItem itemValue="Milas" itemLabel="Milas"></f:selectItem>
+                                <f:selectItem itemValue="Ortaca" itemLabel="Ortaca"></f:selectItem>
+                                <f:selectItem itemValue="Seydikemer" itemLabel="Seydikemer"></f:selectItem>
+                                <f:selectItem itemValue="Ula" itemLabel="Ula"></f:selectItem>
+                                <f:selectItem itemValue="Yatağan" itemLabel="Yatağan"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s49}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s49}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Bulanık" itemLabel="Bulanık"></f:selectItem>
+                                <f:selectItem itemValue="Hasköy" itemLabel="Hasköy"></f:selectItem>
+                                <f:selectItem itemValue="Korkut" itemLabel="Korkut"></f:selectItem>
+                                <f:selectItem itemValue="Malazgirt" itemLabel="Malazgirt"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Varto" itemLabel="Varto"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s50}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s50}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Acıgöl" itemLabel="Acıgöl"></f:selectItem>
+                                <f:selectItem itemValue="Avanos" itemLabel="Avanos"></f:selectItem>
+                                <f:selectItem itemValue="Derinkuyu" itemLabel="Derinkuyu"></f:selectItem>
+                                <f:selectItem itemValue="Gülşehir" itemLabel="Gülşehir"></f:selectItem>
+                                <f:selectItem itemValue="Hacıbektaş" itemLabel="Hacıbektaş"></f:selectItem>
+                                <f:selectItem itemValue="Kozaklı" itemLabel="Kozaklı"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Ürgüp" itemLabel="Ürgüp"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s51}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s51}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Altunhisar" itemLabel="Altunhisar"></f:selectItem>
+                                <f:selectItem itemValue="Bor" itemLabel="Bor"></f:selectItem>
+                                <f:selectItem itemValue="Çamardı" itemLabel="Çamardı"></f:selectItem>
+                                <f:selectItem itemValue="Çiftlik" itemLabel="Çiftlik"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Ulukışla" itemLabel="Ulukışla"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s52}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s52}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Akkuş" itemLabel="Akkuş"></f:selectItem>
+                                <f:selectItem itemValue="Altınordu" itemLabel="Altınordu"></f:selectItem>
+                                <f:selectItem itemValue="Aybastı" itemLabel="Aybastı"></f:selectItem>
+                                <f:selectItem itemValue="Çamaş" itemLabel="Çamaş"></f:selectItem>
+                                <f:selectItem itemValue="Çatalpınar" itemLabel="Çatalpınar"></f:selectItem>
+                                <f:selectItem itemValue="Çaybaşı" itemLabel="Çaybaşı"></f:selectItem>
+                                <f:selectItem itemValue="Fatsa" itemLabel="Fatsa"></f:selectItem>
+                                <f:selectItem itemValue="Gölköy" itemLabel="Gölköy"></f:selectItem>
+                                <f:selectItem itemValue="Gülyalı" itemLabel="Gülyalı"></f:selectItem>
+                                <f:selectItem itemValue="Gürgentepe" itemLabel="Gürgentepe"></f:selectItem>
+                                <f:selectItem itemValue="İkizce" itemLabel="İkizce"></f:selectItem>
+                                <f:selectItem itemValue="Kabadüz" itemLabel="Kabadüz"></f:selectItem>
+                                <f:selectItem itemValue="Kabataş" itemLabel="Kabataş"></f:selectItem>
+                                <f:selectItem itemValue="Korgan" itemLabel="Korgan"></f:selectItem>
+                                <f:selectItem itemValue="Kumru" itemLabel="Kumru"></f:selectItem>
+                                <f:selectItem itemValue="Mesudiye" itemLabel="Mesudiye"></f:selectItem>
+                                <f:selectItem itemValue="Perşembe" itemLabel="Perşembe"></f:selectItem>
+                                <f:selectItem itemValue="Ulubey" itemLabel="Ulubey"></f:selectItem>
+                                <f:selectItem itemValue="Ünye" itemLabel="Ünye"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s53}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s53}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Ardeşen" itemLabel="Ardeşen"></f:selectItem>
+                                <f:selectItem itemValue="Çamlıhemşin" itemLabel="Çamlıhemşin"></f:selectItem>
+                                <f:selectItem itemValue="Çayeli" itemLabel="Çayeli"></f:selectItem>
+                                <f:selectItem itemValue="Derepazarı" itemLabel="Derepazarı"></f:selectItem>
+                                <f:selectItem itemValue="Fındıklı" itemLabel="Fındıklı"></f:selectItem>
+                                <f:selectItem itemValue="Güneysu" itemLabel="Güneysu"></f:selectItem>
+                                <f:selectItem itemValue="Hemşin" itemLabel="Hemşin"></f:selectItem>
+                                <f:selectItem itemValue="İkizdere" itemLabel="İkizdere"></f:selectItem>
+                                <f:selectItem itemValue="İyidere" itemLabel="İyidere"></f:selectItem>
+                                <f:selectItem itemValue="Kalkandere" itemLabel="Kalkandere"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Pazar" itemLabel="Pazar"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s54}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s54}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Adapazarı" itemLabel="Adapazarı"></f:selectItem>
+                                <f:selectItem itemValue="Akyazı" itemLabel="Akyazı"></f:selectItem>
+                                <f:selectItem itemValue="Arifiye" itemLabel="Arifiye"></f:selectItem>
+                                <f:selectItem itemValue="Erenler" itemLabel="Erenler"></f:selectItem>
+                                <f:selectItem itemValue="Ferizli" itemLabel="Ferizli"></f:selectItem>
+                                <f:selectItem itemValue="Geyve" itemLabel="Geyve"></f:selectItem>
+                                <f:selectItem itemValue="Hendek" itemLabel="Hendek"></f:selectItem>
+                                <f:selectItem itemValue="Karapürçek" itemLabel="Karapürçek"></f:selectItem>
+                                <f:selectItem itemValue="Karasu" itemLabel="Karasu"></f:selectItem>
+                                <f:selectItem itemValue="Kaynarca" itemLabel="Kaynarca"></f:selectItem>
+                                <f:selectItem itemValue="Kocaali" itemLabel="Kocaali"></f:selectItem>
+                                <f:selectItem itemValue="Pamukova" itemLabel="Pamukova"></f:selectItem>
+                                <f:selectItem itemValue="Sapanca" itemLabel="Sapanca"></f:selectItem>
+                                <f:selectItem itemValue="Serdivan" itemLabel="Serdivan"></f:selectItem>
+                                <f:selectItem itemValue="Söğütlü" itemLabel="Söğütlü"></f:selectItem>
+                                <f:selectItem itemValue="Taraklı" itemLabel="Taraklı"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s55}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s55}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="19 Mayıs" itemLabel="19 Mayıs"></f:selectItem>
+                                <f:selectItem itemValue="Alaçam" itemLabel="Alaçam"></f:selectItem>
+                                <f:selectItem itemValue="Asarcık" itemLabel="Asarcık"></f:selectItem>
+                                <f:selectItem itemValue="Atakum" itemLabel="Atakum"></f:selectItem>
+                                <f:selectItem itemValue="Ayvacık" itemLabel="Ayvacık"></f:selectItem>
+                                <f:selectItem itemValue="Bafra" itemLabel="Bafra"></f:selectItem>
+                                <f:selectItem itemValue="Canik" itemLabel="Canik"></f:selectItem>
+                                <f:selectItem itemValue="Çarşamba" itemLabel="Çarşamba"></f:selectItem>
+                                <f:selectItem itemValue="Havza" itemLabel="Havza"></f:selectItem>
+                                <f:selectItem itemValue="İlkadım" itemLabel="İlkadım"></f:selectItem>
+                                <f:selectItem itemValue="Kavak" itemLabel="Kavak"></f:selectItem>
+                                <f:selectItem itemValue="Ladik" itemLabel="Ladik"></f:selectItem>
+                                <f:selectItem itemValue="Salıpazarı" itemLabel="Salıpazarı"></f:selectItem>
+                                <f:selectItem itemValue="Tekkeköy" itemLabel="Tekkeköy"></f:selectItem>
+                                <f:selectItem itemValue="Terme" itemLabel="Terme"></f:selectItem>
+                                <f:selectItem itemValue="Vezirköprü" itemLabel="Vezirköprü"></f:selectItem>
+                                <f:selectItem itemValue="Yakakent" itemLabel="Yakakent"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s56}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s56}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Baykan" itemLabel="Baykan"></f:selectItem>
+                                <f:selectItem itemValue="Eruh" itemLabel="Eruh"></f:selectItem>
+                                <f:selectItem itemValue="Kurtalan" itemLabel="Kurtalan"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Pervari" itemLabel="Pervari"></f:selectItem>
+                                <f:selectItem itemValue="Şirvan" itemLabel="Şirvan"></f:selectItem>
+                                <f:selectItem itemValue="Tillo" itemLabel="Tillo"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s57}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s57}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Ayancık" itemLabel="Ayancık"></f:selectItem>
+                                <f:selectItem itemValue="Boyabat" itemLabel="Boyabat"></f:selectItem>
+                                <f:selectItem itemValue="Dikmen" itemLabel="Dikmen"></f:selectItem>
+                                <f:selectItem itemValue="Durağan" itemLabel="Durağan"></f:selectItem>
+                                <f:selectItem itemValue="Erfelek" itemLabel="Erfelek"></f:selectItem>
+                                <f:selectItem itemValue="Gerze" itemLabel="Gerze"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Saraydüzü" itemLabel="Saraydüzü"></f:selectItem>
+                                <f:selectItem itemValue="Türkeli" itemLabel="Türkeli"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s58}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s58}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Akıncılar" itemLabel="Akıncılar"></f:selectItem>
+                                <f:selectItem itemValue="Altınyayla" itemLabel="Altınyayla"></f:selectItem>
+                                <f:selectItem itemValue="Divriği" itemLabel="Divriği"></f:selectItem>
+                                <f:selectItem itemValue="Doğanşar" itemLabel="Doğanşar"></f:selectItem>
+                                <f:selectItem itemValue="Gemerek" itemLabel="Gemerek"></f:selectItem>
+                                <f:selectItem itemValue="Gölova" itemLabel="Gölova"></f:selectItem>
+                                <f:selectItem itemValue="Gürün" itemLabel="Gürün"></f:selectItem>
+                                <f:selectItem itemValue="Hafik" itemLabel="Hafik"></f:selectItem>
+                                <f:selectItem itemValue="İmranlı" itemLabel="İmranlı"></f:selectItem>
+                                <f:selectItem itemValue="Kangal" itemLabel="Kangal"></f:selectItem>
+                                <f:selectItem itemValue="Koyulhisar" itemLabel="Koyulhisar"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Şarkışla" itemLabel="Şarkışla"></f:selectItem>
+                                <f:selectItem itemValue="Suşehri" itemLabel="Suşehri"></f:selectItem>
+                                <f:selectItem itemValue="Ulaş" itemLabel="Ulaş"></f:selectItem>
+                                <f:selectItem itemValue="Yıldızeli" itemLabel="Yıldızeli"></f:selectItem>
+                                <f:selectItem itemValue="Zara" itemLabel="Zara"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s59}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s59}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Çerkezköy" itemLabel="Çerkezköy"></f:selectItem>
+                                <f:selectItem itemValue="Çorlu" itemLabel="Çorlu"></f:selectItem>
+                                <f:selectItem itemValue="Ergene" itemLabel="Ergene"></f:selectItem>
+                                <f:selectItem itemValue="Hayrabolu" itemLabel="Hayrabolu"></f:selectItem>
+                                <f:selectItem itemValue="Kapaklı" itemLabel="Kapaklı"></f:selectItem>
+                                <f:selectItem itemValue="Malkara" itemLabel="Malkara"></f:selectItem>
+                                <f:selectItem itemValue="Marmaraereğlisi" itemLabel="Marmaraereğlisi"></f:selectItem>
+                                <f:selectItem itemValue="Muratlı" itemLabel="Muratlı"></f:selectItem>
+                                <f:selectItem itemValue="Saray" itemLabel="Saray"></f:selectItem>
+                                <f:selectItem itemValue="Şarköy" itemLabel="Şarköy"></f:selectItem>
+                                <f:selectItem itemValue="Süleymanpaşa" itemLabel="Süleymanpaşa"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s60}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s60}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Almus" itemLabel="Almus"></f:selectItem>
+                                <f:selectItem itemValue="Artova" itemLabel="Artova"></f:selectItem>
+                                <f:selectItem itemValue="Başçiftlik" itemLabel="Başçiftlik"></f:selectItem>
+                                <f:selectItem itemValue="Erbaa" itemLabel="Erbaa"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Niksar" itemLabel="Niksar"></f:selectItem>
+                                <f:selectItem itemValue="Pazar" itemLabel="Pazar"></f:selectItem>
+                                <f:selectItem itemValue="Reşadiye" itemLabel="Reşadiye"></f:selectItem>
+                                <f:selectItem itemValue="Sulusaray" itemLabel="Sulusaray"></f:selectItem>
+                                <f:selectItem itemValue="Turhal" itemLabel="Turhal"></f:selectItem>
+                                <f:selectItem itemValue="Yeşilyurt" itemLabel="Yeşilyurt"></f:selectItem>
+                                <f:selectItem itemValue="Zile" itemLabel="Zile"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s61}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s61}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Akçaabat" itemLabel="Akçaabat"></f:selectItem>
+                                <f:selectItem itemValue="Araklı" itemLabel="Araklı"></f:selectItem>
+                                <f:selectItem itemValue="Arsin" itemLabel="Arsin"></f:selectItem>
+                                <f:selectItem itemValue="Beşikdüzü" itemLabel="Beşikdüzü"></f:selectItem>
+                                <f:selectItem itemValue="Çarşıbaşı" itemLabel="Çarşıbaşı"></f:selectItem>
+                                <f:selectItem itemValue="Çaykara" itemLabel="Çaykara"></f:selectItem>
+                                <f:selectItem itemValue="Dernekpazarı" itemLabel="Dernekpazarı"></f:selectItem>
+                                <f:selectItem itemValue="Düzköy" itemLabel="Düzköy"></f:selectItem>
+                                <f:selectItem itemValue="Hayrat" itemLabel="Hayrat"></f:selectItem>
+                                <f:selectItem itemValue="Köprübaşı" itemLabel="Köprübaşı"></f:selectItem>
+                                <f:selectItem itemValue="Maçka" itemLabel="Maçka"></f:selectItem>
+                                <f:selectItem itemValue="Of" itemLabel="Of"></f:selectItem>
+                                <f:selectItem itemValue="Ortahisar" itemLabel="Ortahisar"></f:selectItem>
+                                <f:selectItem itemValue="Şalpazarı" itemLabel="Şalpazarı"></f:selectItem>
+                                <f:selectItem itemValue="Sürmene" itemLabel="Sürmene"></f:selectItem>
+                                <f:selectItem itemValue="Tonya" itemLabel="Tonya"></f:selectItem>
+                                <f:selectItem itemValue="Vakfıkebir" itemLabel="Vakfıkebir"></f:selectItem>
+                                <f:selectItem itemValue="Yomra" itemLabel="Yomra"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s62}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s62}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Çemişgezek" itemLabel="Çemişgezek"></f:selectItem>
+                                <f:selectItem itemValue="Hozat" itemLabel="Hozat"></f:selectItem>
+                                <f:selectItem itemValue="Mazgirt" itemLabel="Mazgirt"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Nazımiye" itemLabel="Nazımiye"></f:selectItem>
+                                <f:selectItem itemValue="Ovacık" itemLabel="Ovacık"></f:selectItem>
+                                <f:selectItem itemValue="Pertek" itemLabel="Pertek"></f:selectItem>
+                                <f:selectItem itemValue="Pülümür" itemLabel="Pülümür"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s63}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s63}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Akçakale" itemLabel="Akçakale"></f:selectItem>
+                                <f:selectItem itemValue="Birecik" itemLabel="Birecik"></f:selectItem>
+                                <f:selectItem itemValue="Bozova" itemLabel="Bozova"></f:selectItem>
+                                <f:selectItem itemValue="Ceylanpınar" itemLabel="Ceylanpınar"></f:selectItem>
+                                <f:selectItem itemValue="Eyyübiye" itemLabel="Eyyübiye"></f:selectItem>
+                                <f:selectItem itemValue="Halfeti" itemLabel="Halfeti"></f:selectItem>
+                                <f:selectItem itemValue="Haliliye" itemLabel="Haliliye"></f:selectItem>
+                                <f:selectItem itemValue="Harran" itemLabel="Harran"></f:selectItem>
+                                <f:selectItem itemValue="Hilvan" itemLabel="Hilvan"></f:selectItem>
+                                <f:selectItem itemValue="Karaköprü" itemLabel="Karaköprü"></f:selectItem>
+                                <f:selectItem itemValue="Siverek" itemLabel="Siverek"></f:selectItem>
+                                <f:selectItem itemValue="Suruç" itemLabel="Suruç"></f:selectItem>
+                                <f:selectItem itemValue="Viranşehir" itemLabel="Viranşehir"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s64}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s64}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Banaz" itemLabel="Banaz"></f:selectItem>
+                                <f:selectItem itemValue="Eşme" itemLabel="Eşme"></f:selectItem>
+                                <f:selectItem itemValue="Karahallı" itemLabel="Karahallı"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Sivaslı" itemLabel="Sivaslı"></f:selectItem>
+                                <f:selectItem itemValue="Ulubey" itemLabel="Ulubey"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s65}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s65}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Bahçesaray" itemLabel="Bahçesaray"></f:selectItem>
+                                <f:selectItem itemValue="Başkale" itemLabel="Başkale"></f:selectItem>
+                                <f:selectItem itemValue="Çaldıran" itemLabel="Çaldıran"></f:selectItem>
+                                <f:selectItem itemValue="Çatak" itemLabel="Çatak"></f:selectItem>
+                                <f:selectItem itemValue="Edremit" itemLabel="Edremit"></f:selectItem>
+                                <f:selectItem itemValue="Erciş" itemLabel="Erciş"></f:selectItem>
+                                <f:selectItem itemValue="Gevaş" itemLabel="Gevaş"></f:selectItem>
+                                <f:selectItem itemValue="Gürpınar" itemLabel="Gürpınar"></f:selectItem>
+                                <f:selectItem itemValue="İpekyolu" itemLabel="İpekyolu"></f:selectItem>
+                                <f:selectItem itemValue="Muradiye" itemLabel="Muradiye"></f:selectItem>
+                                <f:selectItem itemValue="Özalp" itemLabel="Özalp"></f:selectItem>
+                                <f:selectItem itemValue="Saray" itemLabel="Saray"></f:selectItem>
+                                <f:selectItem itemValue="Tuşba" itemLabel="Tuşba"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s66}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s66}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Akdağmadeni" itemLabel="Akdağmadeni"></f:selectItem>
+                                <f:selectItem itemValue="Aydıncık" itemLabel="Aydıncık"></f:selectItem>
+                                <f:selectItem itemValue="Boğazlıyan" itemLabel="Boğazlıyan"></f:selectItem>
+                                <f:selectItem itemValue="Çandır" itemLabel="Çandır"></f:selectItem>
+                                <f:selectItem itemValue="Çayıralan" itemLabel="Çayıralan"></f:selectItem>
+                                <f:selectItem itemValue="Çekerek" itemLabel="Çekerek"></f:selectItem>
+                                <f:selectItem itemValue="Kadışehri" itemLabel="Kadışehri"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Saraykent" itemLabel="Saraykent"></f:selectItem>
+                                <f:selectItem itemValue="Sarıkaya" itemLabel="Sarıkaya"></f:selectItem>
+                                <f:selectItem itemValue="Şefaatli" itemLabel="Şefaatli"></f:selectItem>
+                                <f:selectItem itemValue="Sorgun" itemLabel="Sorgun"></f:selectItem>
+                                <f:selectItem itemValue="Yenifakılı" itemLabel="Yenifakılı"></f:selectItem>
+                                <f:selectItem itemValue="Yerköy" itemLabel="Yerköy"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s67}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s67}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Alaplı" itemLabel="Alaplı"></f:selectItem>
+                                <f:selectItem itemValue="Çaycuma" itemLabel="Çaycuma"></f:selectItem>
+                                <f:selectItem itemValue="Devrek" itemLabel="Devrek"></f:selectItem>
+                                <f:selectItem itemValue="Ereğli" itemLabel="Ereğli"></f:selectItem>
+                                <f:selectItem itemValue="Gökçebey" itemLabel="Gökçebey"></f:selectItem>
+                                <f:selectItem itemValue="Kilimli" itemLabel="Kilimli"></f:selectItem>
+                                <f:selectItem itemValue="Kozlu" itemLabel="Kozlu"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s68}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s68}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Ağaçören" itemLabel="Ağaçören"></f:selectItem>
+                                <f:selectItem itemValue="Eskil" itemLabel="Eskil"></f:selectItem>
+                                <f:selectItem itemValue="Gülağaç" itemLabel="Gülağaç"></f:selectItem>
+                                <f:selectItem itemValue="Güzelyurt" itemLabel="Güzelyurt"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Ortaköy" itemLabel="Ortaköy"></f:selectItem>
+                                <f:selectItem itemValue="Sarıyahşi" itemLabel="Sarıyahşi"></f:selectItem>
+                                <f:selectItem itemValue="Sultanhanı" itemLabel="Sultanhanı"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s69}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s69}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Aydıntepe" itemLabel="Aydıntepe"></f:selectItem>
+                                <f:selectItem itemValue="Demirözü" itemLabel="Demirözü"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s70}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s70}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Ayrancı" itemLabel="Ayrancı"></f:selectItem>
+                                <f:selectItem itemValue="Başyayla" itemLabel="Başyayla"></f:selectItem>
+                                <f:selectItem itemValue="Ermenek" itemLabel="Ermenek"></f:selectItem>
+                                <f:selectItem itemValue="Kazımkarabekir" itemLabel="Kazımkarabekir"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Sarıveliler" itemLabel="Sarıveliler"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s71}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s71}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Bahşili" itemLabel="Bahşili"></f:selectItem>
+                                <f:selectItem itemValue="Balışeyh" itemLabel="Balışeyh"></f:selectItem>
+                                <f:selectItem itemValue="Çelebi" itemLabel="Çelebi"></f:selectItem>
+                                <f:selectItem itemValue="Delice" itemLabel="Delice"></f:selectItem>
+                                <f:selectItem itemValue="Karakeçili" itemLabel="Karakeçili"></f:selectItem>
+                                <f:selectItem itemValue="Keskin" itemLabel="Keskin"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Sulakyurt" itemLabel="Sulakyurt"></f:selectItem>
+                                <f:selectItem itemValue="Yahşihan" itemLabel="Yahşihan"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s72}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s72}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Beşiri" itemLabel="Beşiri"></f:selectItem>
+                                <f:selectItem itemValue="Gercüş" itemLabel="Gercüş"></f:selectItem>
+                                <f:selectItem itemValue="Hasankeyf" itemLabel="Hasankeyf"></f:selectItem>
+                                <f:selectItem itemValue="Kozluk" itemLabel="Kozluk"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Sason" itemLabel="Sason"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s73}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s73}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Beytüşşebap" itemLabel="Beytüşşebap"></f:selectItem>
+                                <f:selectItem itemValue="Cizre" itemLabel="Cizre"></f:selectItem>
+                                <f:selectItem itemValue="Güçlükonak" itemLabel="Güçlükonak"></f:selectItem>
+                                <f:selectItem itemValue="İdil" itemLabel="İdil"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Silopi" itemLabel="Silopi"></f:selectItem>
+                                <f:selectItem itemValue="Uludere" itemLabel="Uludere"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s74}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s74}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Amasra" itemLabel="Amasra"></f:selectItem>
+                                <f:selectItem itemValue="Kurucaşile" itemLabel="Kurucaşile"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Ulus" itemLabel="Ulus"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s75}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s75}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Çıldır" itemLabel="Çıldır"></f:selectItem>
+                                <f:selectItem itemValue="Damal" itemLabel="Damal"></f:selectItem>
+                                <f:selectItem itemValue="Göle" itemLabel="Göle"></f:selectItem>
+                                <f:selectItem itemValue="Hanak" itemLabel="Hanak"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Posof" itemLabel="Posof"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s76}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s76}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Aralık" itemLabel="Aralık"></f:selectItem>
+                                <f:selectItem itemValue="Karakoyunlu" itemLabel="Karakoyunlu"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Tuzluca" itemLabel="Tuzluca"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s77}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s77}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Altınova" itemLabel="Altınova"></f:selectItem>
+                                <f:selectItem itemValue="Armutlu" itemLabel="Armutlu"></f:selectItem>
+                                <f:selectItem itemValue="Çiftlikköy" itemLabel="Çiftlikköy"></f:selectItem>
+                                <f:selectItem itemValue="Çınarcık" itemLabel="Çınarcık"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Termal" itemLabel="Termal"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s78}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s78}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Eflani" itemLabel="Eflani"></f:selectItem>
+                                <f:selectItem itemValue="Eskipazar" itemLabel="Eskipazar"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Ovacık" itemLabel="Ovacık"></f:selectItem>
+                                <f:selectItem itemValue="Safranbolu" itemLabel="Safranbolu"></f:selectItem>
+                                <f:selectItem itemValue="Yenice" itemLabel="Yenice"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s79}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s79}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Elbeyli" itemLabel="Elbeyli"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Musabeyli" itemLabel="Musabeyli"></f:selectItem>
+                                <f:selectItem itemValue="Polateli" itemLabel="Polateli"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s80}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s80}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Bahçe" itemLabel="Bahçe"></f:selectItem>
+                                <f:selectItem itemValue="Düziçi" itemLabel="Düziçi"></f:selectItem>
+                                <f:selectItem itemValue="Hasanbeyli" itemLabel="Hasanbeyli"></f:selectItem>
+                                <f:selectItem itemValue="Kadirli" itemLabel="Kadirli"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Sumbas" itemLabel="Sumbas"></f:selectItem>
+                                <f:selectItem itemValue="Toprakkale" itemLabel="Toprakkale"></f:selectItem>
+                            </h:selectOneMenu>
+                            <h:outputText rendered="#{add.address.country==add.s81}" value="District:"></h:outputText>
+                            <h:selectOneMenu value="#{add.address.district}" style="width: 179px" rendered="#{add.address.country==add.s81}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Distinct"></f:selectItem>
+                                <f:selectItem itemValue="Akçakoca" itemLabel="Akçakoca"></f:selectItem>
+                                <f:selectItem itemValue="Çilimli" itemLabel="Çilimli"></f:selectItem>
+                                <f:selectItem itemValue="Cumayeri" itemLabel="Cumayeri"></f:selectItem>
+                                <f:selectItem itemValue="Gölyaka" itemLabel="Gölyaka"></f:selectItem>
+                                <f:selectItem itemValue="Gümüşova" itemLabel="Gümüşova"></f:selectItem>
+                                <f:selectItem itemValue="Kaynaşlı" itemLabel="Kaynaşlı"></f:selectItem>
+                                <f:selectItem itemValue="Merkez" itemLabel="Merkez"></f:selectItem>
+                                <f:selectItem itemValue="Yığılca" itemLabel="Yığılca"></f:selectItem>                             
+                            </h:selectOneMenu>
+                            
+                            <h:outputText value="Person:"></h:outputText><br></br>
+                            <h:selectOneMenu value="#{add.address.p_id}"   style="width:179px">
+                                <f:selectItem itemValue="#{null}" itemLabel="Select Person!"></f:selectItem>
+                                <f:selectItems value="#{per.personList}" var="p" itemLabel="#{p.first_name}&nbsp;#{p.last_name}" itemValue="#{p.person_id}"/>
+                            </h:selectOneMenu>
+
+                            <h:outputText value="Neighborhood:"></h:outputText>
+                            <h:inputText size="15"  value="#{add.address.neighborhood}" autocomplete="off" required="true" p:placeholder="neighborhood" ></h:inputText>
+                            <h:outputText  value="Street:"></h:outputText>
+                            <h:inputText size="15"  value="#{add.address.street}" autocomplete="off"  required="true" p:placeholder="street" ></h:inputText>
+                            <h:outputText value="Number:"></h:outputText>
+                            <h:inputText size="15" value="#{add.address.number}" autocomplete="off" required="true" p:placeholder="number" ></h:inputText>
+                            <h:outputText value="Postal Code:"></h:outputText>
+                            <h:inputText size="15" value="#{add.address.postal_code}" autocomplete="off" required="true" p:placeholder="postal_code" ></h:inputText>
+
+                        </b>
+                        <br></br><br></br>
+                        <h:form >
+                            <div class="btn-group-toggle">
+                                <h:commandButton  rendered="#{add.address.address_id==0}" action="#{add.save()}" styleClass="btn-success" value="Insert">
+                                    <f:ajax execute="form1" render="form1 tablo"/>
+                                </h:commandButton>
+                                <h:commandButton action="#{add.update()}" rendered="#{add.address.address_id!=0}" styleClass="btn-primary" value="Update">
+                                    <f:ajax execute="form1" render="form1 tablo"/>
+                                </h:commandButton>
+                                <h:commandButton rendered="#{add.address.address_id!=0}" action="#{add.clearForm()}" styleClass="btn-warning" value="ClearForm">
+                                    <f:ajax execute="@this" render="form1 tablo"/>
+                                </h:commandButton>
+
+                            </div>
+                        </h:form>
+
+
+
+                    </h:form>
+
+                </div>
+
+            </div>
+        </div>
+    </h:body>
+</html>
+

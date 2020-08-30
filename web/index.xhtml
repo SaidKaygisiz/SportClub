@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="template.xhtml">
+
+
+    <ui:define name="ust">
+        <i style="color: black">H</i>
+        <i style="color: crimson">O</i>
+        <i style="color: purple">M</i>
+        <i style="color: orangered">E</i>&nbsp;&nbsp;&nbsp;
+        <i style="color: orangered">P</i>
+        <i style="color: green">A</i>
+        <i style="color: brown">G</i>
+        <i style="color: royalblue">E</i>
+    </ui:define>
+
+
+
+    <ui:define name="center">
+
+        <b style="color: red">+Person Table: </b>Primary key:person_id,Character Varying first_name,Character Varying last_name,Character Varying e_mail,char gender,Date birth_date <br></br><br></br>
+
+        <b style="color: red">+Member Table: </b> Primary key:member_id,Integer donation_amount,Character Varying first_name,Character Varying last_name,Character Varying e_mail,char gender,Date birth_date.This table has inherited from the person table.
+        <br></br><br></br>
+
+        <b style="color: red">+Staff Table: </b>Primary key:staff_id, Character Varying degree,Character Varying first_name,Character Varying last_name,Character Varying e_mail,char gender,Date birth_date.This table has inherited from the person table.<br></br><br></br>
+
+        <b style="color: red">+Athlete Table: </b>Primary key:athelete_id,Integer height,Integer weight,Integer testimonial,Character Varying first_name,Character Varying last_name,Character Varying e_mail,char gender,Date birth_date.This table has inherited from the person table.<br></br><br></br>
+
+        <b style="color: red">+Supporter Table: </b>Primary key:supporter_id,Character Varying first_name,Character Varying last_name,Character Varying e_mail,char gender,Date birth_date.This table has inherited from the person table.<br></br><br></br>
+
+        <b style="color: red">+Branch Table: </b>Primary key:branch_id,Character Varying branch_name.There is one-to-many relationship with the athlete table.<br></br><br></br>
+
+        <b style="color: red">+Ticket Table: </b>Primary key:ticket_id,Integer ticket_number,Character Varying ticket_type.<br></br><br></br>
+
+        <b style="color: red">+Address Table: </b> Primary key:address_id,Character Varying neighborhood,Character Varying street,Character Varying country,Character Varying district,Integer number ,Integer postal_code.Every person has to have an address.<br></br><br></br>
+
+        <b style="color: red">+Authority Table: </b>Primary key:authority_id ,Character Varying authority_name.<br></br><br></br>
+
+        <b style="color: red">+Task Table: </b>Primary key:task_id,Character Varying task_name,Date starting_date.<br></br><br></br>
+
+
+    </ui:define>
+
+
+
+</ui:composition>
+

@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      template="template.xhtml">
+    
+        
+        <ui:define name="ust">
+        <i style="color: black">T</i>
+        <i style="color: crimson">A</i>
+        <i style="color: purple">S</i>
+        <i style="color: orangered">K</i>&nbsp;&nbsp;&nbsp;
+        <i style="color: orangered">L</i>
+        <i style="color: green">I</i>
+        <i style="color: brown">S</i>
+        <i style="color: royalblue">T</i>
+    </ui:define>
+        
+    <ui:define name="center">
+        <div  class="container">
+            <div class="row" >
+                <div style="margin-left: -100px; margin-bottom: 10px;" class="col-md-11 ">
+                    
+                    <h:form id="tablo">
+                        <h2><b>Task Table</b></h2>
+                        <h:dataTable class="table table-hover table-striped"  value="#{taskController.taskList}" var="task">
+                            <h:column>
+                                <f:facet name="header">Task ID</f:facet>
+                                    #{task.task_id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Task_Name</f:facet>
+                                <h:commandLink action="#{taskController.updateForm(task)}" value="#{task.task_name}" style="color: black;">
+                                    <f:ajax execute="@this" render="form1"/>
+                                </h:commandLink>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Starting_Date</f:facet>
+                                    #{task.starting_date}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Delete</f:facet>
+                                <h:commandButton value="Delete" styleClass="btn-danger" action="#{taskController.delete(task)}">
+                                    <f:ajax execute="@this" render="tablo"/>
+                                </h:commandButton>
+                            </h:column>    
+
+                        </h:dataTable>
+                    </h:form>   
+                </div>
+
+                <div  class="col-md-1 form-row">
+                    <h:form  id="form1"><h4> <b>CRUD FORM</b></h4>
+                        <br></br>
+                        <b>
+                            <h:outputText value="Task Name:"></h:outputText>
+                            <h:inputText size="15" value="#{taskController.task.task_name}" required="true" autocomplete="off" p:placeholder="Task_Name" ></h:inputText>
+
+                        </b>
+                        <br></br><br></br>
+                        <h:form>
+                            <div class="btn-group-toggle" >
+                                <h:commandButton rendered="#{taskController.task.task_id==0}" styleClass="btn-success" value="Insert" action="#{taskController.save()}">
+                                    <f:ajax execute="form1" render="form1 tablo"/>
+                                </h:commandButton>
+                                <h:commandButton  action="#{taskController.update()}" rendered="#{taskController.task.task_id!=0}" styleClass="btn-primary" value="Update">
+                                    <f:ajax execute="form1" render="form1 tablo"/>
+                                </h:commandButton>
+                                <h:commandButton rendered="#{taskController.task.task_id!=0}" action="#{taskController.clearForm()}" styleClass="btn-warning" value="Clear Form">
+                                    <f:ajax execute="form1" render="form1"/>
+                                </h:commandButton>
+
+                            </div>
+                        </h:form>
+
+
+                    </h:form>
+
+                </div>
+
+            </div>
+        </div>
+        </ui:define>
+
+    </ui:composition>
+
